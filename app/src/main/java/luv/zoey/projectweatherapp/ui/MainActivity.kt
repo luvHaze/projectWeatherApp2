@@ -1,4 +1,4 @@
-package luv.zoey.projectweatherapp
+package luv.zoey.projectweatherapp.ui
 
 import android.Manifest
 import android.content.Context
@@ -10,9 +10,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.app.ActivityCompat
 import com.google.gson.Gson
-import com.google.gson.GsonBuilder
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_main.*
+import luv.zoey.projectweatherapp.R
 import luv.zoey.projectweatherapp.api.RetrofitClient
 import luv.zoey.projectweatherapp.api.WeatherAPI
 import luv.zoey.projectweatherapp.data.CoordDTO
