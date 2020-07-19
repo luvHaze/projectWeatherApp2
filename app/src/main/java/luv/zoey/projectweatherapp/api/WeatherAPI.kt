@@ -17,7 +17,8 @@ interface WeatherAPI {
     fun getWeatherbyCoord(
         @Query("lat") lat: Double,
         @Query("lon") lon: Double,
-        @Query("appid") appid: String
+        @Query("appid") appid: String,
+        @Query("lang") lang: String = "kr"
     ) : Call<JsonObject>
 
 }

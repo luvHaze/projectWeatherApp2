@@ -4,29 +4,29 @@ import com.google.gson.annotations.SerializedName
 
 data class WeatherResponse (
     @SerializedName("coord")
-    var coord: CoordDTO,
+    var coord: CoordDTO?,
     @SerializedName("weather")
-    var weather: List<Weather>,
+    var weather: List<Weather>?,
     @SerializedName("base")
-    var base: String,
+    var base: String?,
     @SerializedName("main")
-    var main: Temperature,
+    var main: Temperature?,
     @SerializedName("wind")
-    var wind: Wind,
+    var wind: Wind?,
     @SerializedName("clouds")
-    var clouds: Clouds,
+    var clouds: Clouds?,
     @SerializedName("dt")
-    var dt: Int,
+    var dt: Int?,
     @SerializedName("sys")
-    var sys: System,
+    var sys: System?,
     @SerializedName("timezone")
-    var timezone: Int,
+    var timezone: Int?,
     @SerializedName("id")
-    var id: Int,
+    var id: Int?,
     @SerializedName("name")
-    var name: String,
+    var name: String?,
     @SerializedName("cod")
-    var cod: Int
+    var cod: Int?
 ){
     data class Weather(
         var id: Int,

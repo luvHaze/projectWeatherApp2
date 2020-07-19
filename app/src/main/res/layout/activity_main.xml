@@ -6,33 +6,48 @@
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity">
 
+    <TextView
+        android:id="@+id/weatherStatus_Textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:letterSpacing="0.05"
+        android:fontFamily="@font/scoredream_thick"
+        android:text="날씨상태"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/anime_view"
+        app:layout_constraintEnd_toEndOf="@+id/anime_view"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="@+id/anime_view" />
+
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/anime_view"
-        android:layout_width="240dp"
-        android:layout_height="240dp"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
         android:layout_marginStart="55dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="112dp"
         android:layout_marginEnd="55dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:lottie_autoPlay="true"
         app:lottie_colorFilter="#000000"
-        app:lottie_fileName="windy"
         app:lottie_loop="true"
         app:lottie_speed="0.45" />
 
     <TextView
-        android:id="@+id/cityname_TextView"
+        android:id="@+id/adminArea_Textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:fontFamily="sans-serif-thin"
+        android:fontFamily="@font/scoredream_light"
         android:letterSpacing="0.03"
+        android:maxLines="1"
         android:text="Busan"
         android:textAlignment="center"
         android:textColor="#000000"
-        android:textSize="64dp"
+        android:textSize="56dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/anime_view" />
 
@@ -40,37 +55,40 @@
         android:id="@+id/temperature_TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:fontFamily="sans-serif-thin"
+        android:layout_marginTop="52dp"
+        android:fontFamily="@font/scoredream_light"
         android:letterSpacing="0.05"
         android:text="30"
         android:textColor="#000000"
         android:textSize="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cityname_TextView" />
+        app:layout_constraintTop_toBottomOf="@+id/adminArea_Textview" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/subAdminArea_Textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="108dp"
-        android:fontFamily="sans-serif-light"
-        android:text="Temperature"
-        android:textSize="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cityname_TextView" />
-
-    <Button
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="200dp"
-        android:background="@drawable/icon_setting"
-        android:gravity="center"
+        android:layout_marginTop="74dp"
+        android:fontFamily="@font/scoredream_light"
+        android:letterSpacing="0.04"
+        android:maxLines="1"
+        android:text="subadminArea"
+        android:textColor="#717171"
+        android:textSize="14dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cityname_TextView" />
+        app:layout_constraintTop_toTopOf="@+id/adminArea_Textview" />
+
+    <Button
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/icon_setting"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
