@@ -10,16 +10,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="13147b00-3350-4186-9048-437cf0d6fbec" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/ui/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/ui/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-    </list>
+    <list default="true" id="13147b00-3350-4186-9048-437cf0d6fbec" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -185,7 +176,14 @@
       <option name="project" value="LOCAL" />
       <updated>1595155614644</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="# 디자인 구조 변경&#10;&#10;# TODO&#10;- 위치 변경시 다시 API 요청해서 값을 가져오는 부분 구현해야 함&#10;- 좀 더 간결한 구조로 개편해봐야 함">
+      <created>1595156325399</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1595156325399</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -193,7 +191,8 @@
     <MESSAGE value="CreatePoJO" />
     <MESSAGE value="create gitignore" />
     <MESSAGE value="# 전체 서식 변경, 응답처리부분 추가&#10;&#10;# TODO&#10;- 위치 변경시 다시 API 요청해서 값을 가져오는 부분 구현해야 함&#10;- 좀 더 간결한 구조로 개편해봐야 함" />
-    <option name="LAST_COMMIT_MESSAGE" value="# 전체 서식 변경, 응답처리부분 추가&#10;&#10;# TODO&#10;- 위치 변경시 다시 API 요청해서 값을 가져오는 부분 구현해야 함&#10;- 좀 더 간결한 구조로 개편해봐야 함" />
+    <MESSAGE value="# 디자인 구조 변경&#10;&#10;# TODO&#10;- 위치 변경시 다시 API 요청해서 값을 가져오는 부분 구현해야 함&#10;- 좀 더 간결한 구조로 개편해봐야 함" />
+    <option name="LAST_COMMIT_MESSAGE" value="# 디자인 구조 변경&#10;&#10;# TODO&#10;- 위치 변경시 다시 API 요청해서 값을 가져오는 부분 구현해야 함&#10;- 좀 더 간결한 구조로 개편해봐야 함" />
   </component>
   <component name="WindowStateProjectService">
     <state x="696" y="252" key="#PSD" timestamp="1594819232229">
@@ -216,10 +215,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1202" y="25" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1594914221987" />
-    <state x="1045" y="27" key="CommitChangelistDialog2" timestamp="1595155613344">
+    <state x="1045" y="0" key="CommitChangelistDialog2" timestamp="1595156324307">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1045" y="27" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1595155613344" />
+    <state x="1045" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1595156324307" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1595153111278">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -252,10 +251,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1595140834836" />
-    <state x="803" y="252" key="Vcs.Push.Dialog.v2" timestamp="1595155616170">
+    <state x="803" y="252" key="Vcs.Push.Dialog.v2" timestamp="1595156326693">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="803" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1595155616170" />
+    <state x="803" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1595156326693" />
     <state x="629" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1595139113290">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
