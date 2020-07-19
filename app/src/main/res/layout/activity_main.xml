@@ -10,22 +10,22 @@
         android:id="@+id/weatherStatus_Textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:letterSpacing="0.05"
         android:fontFamily="@font/scoredream_thick"
+        android:letterSpacing="0.05"
         android:text="날씨상태"
         android:textAlignment="center"
         android:textColor="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/anime_view"
-        app:layout_constraintEnd_toEndOf="@+id/anime_view"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="@+id/anime_view" />
+        android:textSize="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/temperature_TextView"
+        app:layout_constraintEnd_toEndOf="@+id/temperature_TextView"
+        app:layout_constraintStart_toStartOf="@+id/temperature_TextView" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/anime_view"
         android:layout_width="220dp"
         android:layout_height="220dp"
         android:layout_marginStart="55dp"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="55dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
@@ -40,14 +40,14 @@
         android:id="@+id/adminArea_Textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="148dp"
         android:fontFamily="@font/scoredream_light"
         android:letterSpacing="0.03"
         android:maxLines="1"
         android:text="Busan"
         android:textAlignment="center"
         android:textColor="#000000"
-        android:textSize="56dp"
+        android:textSize="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/anime_view" />
 
@@ -55,21 +55,21 @@
         android:id="@+id/temperature_TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="12dp"
         android:fontFamily="@font/scoredream_light"
-        android:letterSpacing="0.05"
         android:text="30"
         android:textColor="#000000"
-        android:textSize="48dp"
+        android:textSize="56dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adminArea_Textview" />
+        app:layout_constraintTop_toBottomOf="@+id/anime_view" />
 
     <TextView
         android:id="@+id/subAdminArea_Textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="74dp"
+        android:layout_marginTop="28dp"
         android:fontFamily="@font/scoredream_light"
         android:letterSpacing="0.04"
         android:maxLines="1"
@@ -77,7 +77,6 @@
         android:textColor="#717171"
         android:textSize="14dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/adminArea_Textview" />
 

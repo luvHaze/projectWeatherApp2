@@ -49,9 +49,9 @@ class MainActivity : AppCompatActivity() {
         retrofitInstance = RetrofitClient.getInstance()
 
         if (checkPermissions()) {
-            coordDTO = getCoord()
-            locationInfo = getLocation(coordDTO)
-            getWeather(coordDTO.lat!!, coordDTO.lon!!, APP_ID)!!
+            coordDTO = getCoord()   // 1. 위도 경도 가져오기
+            locationInfo = getLocation(coordDTO) // 2. 위도경도로 현재위치정보 가져오기
+            getWeather(coordDTO.lat!!, coordDTO.lon!!, APP_ID) // 현재위치 정보로
 
             Timber.d("[response] : $locationInfo")
         } else {
