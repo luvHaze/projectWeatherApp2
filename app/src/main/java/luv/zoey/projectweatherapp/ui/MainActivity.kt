@@ -3,12 +3,12 @@ package luv.zoey.projectweatherapp.ui
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
-import android.location.Address
-import android.location.Geocoder
-import android.location.LocationManager
+import android.location.*
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
+import androidx.core.location.LocationManagerCompat
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_main.*
@@ -23,11 +23,13 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import timber.log.Timber
+import java.security.Permissions
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
     val LOCATION_REQUEST = 1000
+    var isCheckPermission =false
 
     lateinit var locationInfo: MutableList<Address>
 
@@ -35,29 +37,31 @@ class MainActivity : AppCompatActivity() {
     lateinit var coordDTO: CoordDTO
     lateinit var retrofitInstance: Retrofit
     lateinit var service: WeatherAPI
+    lateinit var locationManager: LocationManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        init()
+        isCheckPermission = init()
+
+        if (isCheckPermission) {
+            coordDTO = getCoord(locationManager)   // 1. 위도 경도 가져오기
+            locationInfo = getLocation(coordDTO) // 2. 위도경도로 현재위치정보 가져오기
+            getWeather(coordDTO.lat!!, coordDTO.lon!!, APP_ID) // 현재위치 정보로
+            Timber.d("[response] : $locationInfo")
+        } else {
+            isCheckPermission = checkPermissions()
+        }
 
     }
 
-    private fun init() {
+    private fun init(): Boolean {
         geocoder = Geocoder(applicationContext, Locale.KOREAN)
         retrofitInstance = RetrofitClient.getInstance()
+        locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
 
-        if (checkPermissions()) {
-            coordDTO = getCoord()   // 1. 위도 경도 가져오기
-            locationInfo = getLocation(coordDTO) // 2. 위도경도로 현재위치정보 가져오기
-            getWeather(coordDTO.lat!!, coordDTO.lon!!, APP_ID) // 현재위치 정보로
-
-            Timber.d("[response] : $locationInfo")
-        } else {
-            Timber.d("권한으로 인해 위치정보 가져오지 못함")
-        }
-
+        return checkPermissions()
     }
 
     private fun checkPermissions(): Boolean {
@@ -94,16 +98,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     // 1. Location Managet로 위도 경도 구하기
-    private fun getCoord(): CoordDTO {
+    private fun getCoord(locationManager: LocationManager): CoordDTO {
         try {
-            val locationManager: LocationManager =
-                getSystemService(Context.LOCATION_SERVICE) as LocationManager
             val currentLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+            return CoordDTO(currentLocation.longitude, currentLocation.latitude)
 
-            return CoordDTO(
-                currentLocation.longitude,
-                currentLocation.latitude
-            )
         } catch (e: SecurityException) {
             e.printStackTrace()
         }
@@ -200,4 +199,7 @@ class MainActivity : AppCompatActivity() {
         weatherStatus_Textview.text = weatherStatus
     }
 
+    private fun sisi() {
+        System.out.prinln("df")
+    }
 }
