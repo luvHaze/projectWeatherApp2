@@ -1,31 +1,17 @@
 package luv.zoey.projectweatherapp.ui
 
 import android.Manifest
-import android.content.Context
 import android.content.pm.PackageManager
 import android.location.Address
-import android.location.Geocoder
-import android.location.LocationManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.core.app.ActivityCompat
-import com.google.gson.Gson
-import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_main.*
 import luv.zoey.projectweatherapp.R
-import luv.zoey.projectweatherapp.api.RetrofitClient
-import luv.zoey.projectweatherapp.api.WeatherAPI
 import luv.zoey.projectweatherapp.data.CoordDTO
 import luv.zoey.projectweatherapp.data.Location
 import luv.zoey.projectweatherapp.data.WeatherResponse
 import luv.zoey.projectweatherapp.others.Constants.APP_ID
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import timber.log.Timber
-import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -42,10 +28,11 @@ class MainActivity : AppCompatActivity() {
         location = Location(applicationContext)
 
         if (checkPermissions()) {
-
             coord = location.getCoord()
             locationInfo = location.getLocation(coord)
-            weatherInfo = location.getWeather(locationInfo[0].latitude, locationInfo[0].longitude, APP_ID)!!
+
+           location.getWeather(locationInfo[0].latitude, locationInfo[0].longitude, APP_ID)
+
             //settingsUI(weatherInfo)
 
         } else {
@@ -56,7 +43,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun getInfo(){
+    private fun getInfo() {
 
     }
 

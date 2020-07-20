@@ -1,22 +1,20 @@
 package luv.zoey.projectweatherapp.api
 
-import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object RetrofitClient {
+class RetrofitInstance {
+    companion object {
 
-    private var instance: Retrofit? = null
-    private var gson = GsonBuilder().setLenient().create()
-
-    fun getInstance() : Retrofit {
-        if(instance == null) {
-            instance = Retrofit.Builder()
+        private val retrofit: Retrofit by lazy {
+            Retrofit.Builder()
                 .baseUrl("http://api.openweathermap.org/data/2.5/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
         }
 
-        return instance!!
+        val api by lazy {
+            retrofit?.create(WeatherAPI::class.java)
+        }
     }
 }
