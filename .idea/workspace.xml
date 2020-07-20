@@ -10,9 +10,9 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="13147b00-3350-4186-9048-437cf0d6fbec" name="Default Changelist" comment="# 디자인 구조 변경 &amp; Add gitignore&#10;&#10;# TODO&#10;- 위치 변경시 다시 API 요청해서 값을 가져오는 부분 구현해야 함&#10;- 좀 더 간결한 구조로 개편해봐야 함">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlinx_kotlinx_coroutines_android_1_3_5_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlinx_kotlinx_coroutines_core_1_3_5_jar.xml" afterDir="false" />
+    <list default="true" id="13147b00-3350-4186-9048-437cf0d6fbec" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/data/WeatherManage.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/build-attribution/androidGradlePluginAttributionData" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -22,13 +22,8 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/api/RetrofitClient.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/api/RetrofitInstance.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/data/Location.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/data/Location.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/data/Location.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/data/LocationManage.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/ui/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/ui/MainActivity.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -75,7 +70,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../AndroidStudy/MVVMNewsApp" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Dependencies" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -204,7 +199,14 @@
       <option name="project" value="LOCAL" />
       <updated>1595156325399</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="# 전체 구조변경중 (branch)&#10;&#10;# TODO&#10;- 현재 getWeather 부분에서 enqueue를 사용하면 내가 원한대로 리턴 하는것이 불가능 하기 때문에 execute를 사용해야한다.&#10;- execute를 사용하려면 비동기 처리를 직접 해줘야한다.&#10;- coroutines와 retrofit에 대한 이해가 좀더 필요">
+      <created>1595259303049</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1595259303049</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -213,7 +215,8 @@
     <MESSAGE value="create gitignore" />
     <MESSAGE value="# 전체 서식 변경, 응답처리부분 추가&#10;&#10;# TODO&#10;- 위치 변경시 다시 API 요청해서 값을 가져오는 부분 구현해야 함&#10;- 좀 더 간결한 구조로 개편해봐야 함" />
     <MESSAGE value="# 디자인 구조 변경&#10;&#10;# TODO&#10;- 위치 변경시 다시 API 요청해서 값을 가져오는 부분 구현해야 함&#10;- 좀 더 간결한 구조로 개편해봐야 함" />
-    <option name="LAST_COMMIT_MESSAGE" value="# 디자인 구조 변경&#10;&#10;# TODO&#10;- 위치 변경시 다시 API 요청해서 값을 가져오는 부분 구현해야 함&#10;- 좀 더 간결한 구조로 개편해봐야 함" />
+    <MESSAGE value="# 전체 구조변경중 (branch)&#10;&#10;# TODO&#10;- 현재 getWeather 부분에서 enqueue를 사용하면 내가 원한대로 리턴 하는것이 불가능 하기 때문에 execute를 사용해야한다.&#10;- execute를 사용하려면 비동기 처리를 직접 해줘야한다.&#10;- coroutines와 retrofit에 대한 이해가 좀더 필요" />
+    <option name="LAST_COMMIT_MESSAGE" value="# 전체 구조변경중 (branch)&#10;&#10;# TODO&#10;- 현재 getWeather 부분에서 enqueue를 사용하면 내가 원한대로 리턴 하는것이 불가능 하기 때문에 execute를 사용해야한다.&#10;- execute를 사용하려면 비동기 처리를 직접 해줘야한다.&#10;- coroutines와 retrofit에 대한 이해가 좀더 필요" />
   </component>
   <component name="WindowStateProjectService">
     <state x="696" y="252" key="#PSD" timestamp="1594819232229">
@@ -224,10 +227,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="992" y="239" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1595259108694" />
-    <state x="929" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1594820004912">
+    <state x="878" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1595262989769">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="929" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1594820004912" />
+    <state x="878" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1595262989769" />
     <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1595154891963">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -236,10 +239,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1202" y="25" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1594914221987" />
-    <state x="1045" y="0" key="CommitChangelistDialog2" timestamp="1595259210333">
+    <state x="1045" y="0" key="CommitChangelistDialog2" timestamp="1595259301857">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1045" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1595259210333" />
+    <state x="1045" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1595259301857" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1595258680872">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -248,22 +251,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1101" y="379" width="446" height="219" key="Github.ShareDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1594913790054" />
-    <state width="1443" height="274" key="GridCell.Tab.0.bottom" timestamp="1595259152660">
+    <state width="1443" height="274" key="GridCell.Tab.0.bottom" timestamp="1595263120978">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1443" height="274" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1595259152660" />
-    <state width="1443" height="274" key="GridCell.Tab.0.center" timestamp="1595259152660">
+    <state width="1443" height="274" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1595263120978" />
+    <state width="1443" height="274" key="GridCell.Tab.0.center" timestamp="1595263120978">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1443" height="274" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1595259152660" />
-    <state width="1443" height="274" key="GridCell.Tab.0.left" timestamp="1595259152660">
+    <state width="1443" height="274" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1595263120978" />
+    <state width="1443" height="274" key="GridCell.Tab.0.left" timestamp="1595263120978">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1443" height="274" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1595259152660" />
-    <state width="1443" height="274" key="GridCell.Tab.0.right" timestamp="1595259152660">
+    <state width="1443" height="274" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1595263120978" />
+    <state width="1443" height="274" key="GridCell.Tab.0.right" timestamp="1595263120978">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1443" height="274" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1595259152660" />
+    <state width="1443" height="274" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1595263120978" />
     <state x="677" y="162" key="SettingsEditor" timestamp="1594964836707">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -272,10 +275,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1595140834836" />
-    <state x="803" y="252" key="Vcs.Push.Dialog.v2" timestamp="1595156326693">
+    <state x="803" y="252" key="Vcs.Push.Dialog.v2" timestamp="1595259304432">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="803" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1595156326693" />
+    <state x="803" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1595259304432" />
     <state x="629" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1595246702284">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

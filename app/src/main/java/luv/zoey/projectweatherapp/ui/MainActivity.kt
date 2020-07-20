@@ -9,37 +9,38 @@ import androidx.core.app.ActivityCompat
 import kotlinx.android.synthetic.main.activity_main.*
 import luv.zoey.projectweatherapp.R
 import luv.zoey.projectweatherapp.data.CoordDTO
-import luv.zoey.projectweatherapp.data.Location
+import luv.zoey.projectweatherapp.data.LocationManage
+import luv.zoey.projectweatherapp.data.WeatherManage
 import luv.zoey.projectweatherapp.data.WeatherResponse
 import luv.zoey.projectweatherapp.others.Constants.APP_ID
+import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
 
     val LOCATION_REQUEST = 1000
 
-    lateinit var locationInfo: MutableList<Address>
     lateinit var coord: CoordDTO
+    lateinit var locationInfo: MutableList<Address>
     lateinit var weatherInfo: WeatherResponse
-    lateinit var location: Location
+
+    lateinit var locationManage: LocationManage
+    lateinit var weatherManage: WeatherManage
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        location = Location(applicationContext)
+        locationManage = LocationManage(applicationContext)
+        weatherManage = WeatherManage()
 
         if (checkPermissions()) {
-            coord = location.getCoord()
-            locationInfo = location.getLocation(coord)
-
-           location.getWeather(locationInfo[0].latitude, locationInfo[0].longitude, APP_ID)
+            coord = locationManage.getCoord()
+            locationInfo = locationManage.getLocation(coord)
+            //TODO  * getWeather 구현
 
             //settingsUI(weatherInfo)
 
-        } else {
-
-
         }
-
 
     }
 
