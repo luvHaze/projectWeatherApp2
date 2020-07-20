@@ -34,26 +34,31 @@ class MainActivity : AppCompatActivity() {
     lateinit var locationInfo: MutableList<Address>
     lateinit var coord: CoordDTO
     lateinit var weatherInfo: WeatherResponse
-
+    lateinit var location: Location
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var location = Location()
+        location = Location(applicationContext)
 
-       if(checkPermissions()){
+        if (checkPermissions()) {
 
-           coord = location.getCoord()
-           Toast.makeText(this,"dfd",Toast.LENGTH_LONG).show()
-       } else {
+            coord = location.getCoord()
+            locationInfo = location.getLocation(coord)
+            weatherInfo = location.getWeather(locationInfo[0].latitude, locationInfo[0].longitude, APP_ID)!!
+            //settingsUI(weatherInfo)
+
+        } else {
 
 
-       }
-
+        }
 
 
     }
 
+    private fun getInfo(){
+
+    }
 
 
     private fun checkPermissions(): Boolean {
@@ -98,7 +103,6 @@ class MainActivity : AppCompatActivity() {
         val subAdminArea = locationInfo[0].thoroughfare
         val temperature = String.format("%.1f", data.main?.temp?.toDouble()?.minus(273.15))
         var weatherStatus = ""
-        var weatherAnimation = 0
 
         when (currentWeatherCode) {
             in 200..299 -> {

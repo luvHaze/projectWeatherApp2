@@ -6,12 +6,11 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="debug" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="13147b00-3350-4186-9048-437cf0d6fbec" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/data/Location.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -22,6 +21,7 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/data/Location.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/data/Location.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/ui/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/ui/MainActivity.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -67,15 +67,15 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/raw" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Dependencies" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateKotlinClassDialog.RecentsKey">
-      <recent name="luv.zoey.projectweatherapp.data" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Zoey\Desktop\gitHub\projectWeatherApp\app\src\main\res\font" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
       <recent name="luv.zoey.projectweatherapp.ui" />
@@ -86,8 +86,8 @@
       <recent name="C:\Users\Zoey\Desktop\gitHub\projectWeatherApp\app\src\main\res\raw" />
       <recent name="C:\Users\Zoey\Desktop\gitHub\projectWeatherApp\app\src\main\res\font" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Zoey\Desktop\gitHub\projectWeatherApp\app\src\main\res\font" />
+    <key name="CreateKotlinClassDialog.RecentsKey">
+      <recent name="luv.zoey.projectweatherapp.data" />
     </key>
   </component>
   <component name="RunManager">
@@ -212,10 +212,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="696" y="252" key="#PSD/0.0.1920.1040@0.0.1920.1040" timestamp="1594819232229" />
-    <state x="992" y="239" key="#com.intellij.ide.util.MemberChooser" timestamp="1595169376093">
+    <state x="992" y="239" key="#com.intellij.ide.util.MemberChooser" timestamp="1595247725542">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="992" y="239" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1595169376093" />
+    <state x="992" y="239" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1595247725542" />
     <state x="929" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1594820004912">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -228,10 +228,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1202" y="25" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1594914221987" />
-    <state x="1045" y="0" key="CommitChangelistDialog2" timestamp="1595156324307">
+    <state x="1045" y="0" key="CommitChangelistDialog2" timestamp="1595248100238">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1045" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1595156324307" />
+    <state x="1045" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1595248100238" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1595153111278">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -240,22 +240,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1101" y="379" width="446" height="219" key="Github.ShareDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1594913790054" />
-    <state width="1877" height="271" key="GridCell.Tab.0.bottom" timestamp="1595169288819">
+    <state width="1443" height="260" key="GridCell.Tab.0.bottom" timestamp="1595216156885">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="271" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1595169288819" />
-    <state width="1877" height="271" key="GridCell.Tab.0.center" timestamp="1595169288819">
+    <state width="1443" height="260" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1595216156885" />
+    <state width="1443" height="260" key="GridCell.Tab.0.center" timestamp="1595216156884">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="271" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1595169288819" />
-    <state width="1877" height="271" key="GridCell.Tab.0.left" timestamp="1595169288818">
+    <state width="1443" height="260" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1595216156884" />
+    <state width="1443" height="260" key="GridCell.Tab.0.left" timestamp="1595216156884">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="271" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1595169288818" />
-    <state width="1877" height="271" key="GridCell.Tab.0.right" timestamp="1595169288819">
+    <state width="1443" height="260" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1595216156884" />
+    <state width="1443" height="260" key="GridCell.Tab.0.right" timestamp="1595216156885">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="271" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1595169288819" />
+    <state width="1443" height="260" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1595216156885" />
     <state x="677" y="162" key="SettingsEditor" timestamp="1594964836707">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -268,10 +268,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="803" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1595156326693" />
-    <state x="629" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1595139113290">
+    <state x="629" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1595246702284">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="629" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1595139113290" />
+    <state x="629" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1595246702284" />
     <state x="877" y="293" key="git4idea.merge.GitPullDialog" timestamp="1594975715041">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
