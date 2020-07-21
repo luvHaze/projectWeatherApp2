@@ -5,8 +5,12 @@ import android.content.pm.PackageManager
 import android.location.Address
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import luv.zoey.projectweatherapp.R
 import luv.zoey.projectweatherapp.data.CoordDTO
 import luv.zoey.projectweatherapp.data.LocationManage
@@ -21,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var coord: CoordDTO
     lateinit var locationInfo: MutableList<Address>
-    lateinit var weatherInfo: WeatherResponse
+    var weatherInfo: WeatherResponse? = null
 
     lateinit var locationManage: LocationManage
     lateinit var weatherManage: WeatherManage
@@ -37,8 +41,25 @@ class MainActivity : AppCompatActivity() {
             coord = locationManage.getCoord()
             locationInfo = locationManage.getLocation(coord)
             //TODO  * getWeather 구현
+            GlobalScope.launch {
+                weatherInfo = weatherManage.getWeather(coord.lat!!, coord.lon!!, APP_ID)!!
+                Timber.d("[getWeather] : $weatherInfo")
 
-            //settingsUI(weatherInfo)
+                launch (Dispatchers.Main){
+                    settingsUI(weatherInfo!!)
+                }
+            }
+
+
+        } else {
+
+            Toast.makeText(this, "권한 요청 필요", Toast.LENGTH_LONG).show()
+            requestPermissions(
+                arrayOf(
+                    Manifest.permission.ACCESS_COARSE_LOCATION,
+                    Manifest.permission.ACCESS_FINE_LOCATION
+                ), LOCATION_REQUEST
+            )
 
         }
 
