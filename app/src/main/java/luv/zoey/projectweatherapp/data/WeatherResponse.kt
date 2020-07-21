@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class WeatherResponse (
     @SerializedName("coord")
-    var coord: CoordDTO?,
+    var coord: Coord?,
     @SerializedName("weather")
     var weather: List<Weather>?,
     @SerializedName("base")
@@ -28,6 +28,12 @@ data class WeatherResponse (
     @SerializedName("cod")
     var cod: Int?
 ){
+    data class Coord(
+        var lat: Double,
+        var lon: Double
+
+    )
+
     data class Weather(
         var id: Int,
         var main: String,

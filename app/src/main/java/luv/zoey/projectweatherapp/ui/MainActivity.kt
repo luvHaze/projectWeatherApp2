@@ -12,9 +12,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import luv.zoey.projectweatherapp.R
-import luv.zoey.projectweatherapp.data.CoordDTO
-import luv.zoey.projectweatherapp.data.LocationManage
-import luv.zoey.projectweatherapp.data.WeatherManage
+import luv.zoey.projectweatherapp.repository.LocationManage
+import luv.zoey.projectweatherapp.repository.WeatherManage
 import luv.zoey.projectweatherapp.data.WeatherResponse
 import luv.zoey.projectweatherapp.others.Constants.APP_ID
 import timber.log.Timber
@@ -23,9 +22,9 @@ class MainActivity : AppCompatActivity() {
 
     val LOCATION_REQUEST = 1000
 
-    lateinit var coord: CoordDTO
     lateinit var locationInfo: MutableList<Address>
     var weatherInfo: WeatherResponse? = null
+    var weatherInfo2: WeatherResponse? = null
 
     lateinit var locationManage: LocationManage
     lateinit var weatherManage: WeatherManage
@@ -34,22 +33,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        locationManage = LocationManage(applicationContext)
+        locationManage = LocationManage(
+            applicationContext
+        )
         weatherManage = WeatherManage()
 
         if (checkPermissions()) {
-            coord = locationManage.getCoord()
-            locationInfo = locationManage.getLocation(coord)
-            //TODO  * getWeather 구현
-            GlobalScope.launch {
-                weatherInfo = weatherManage.getWeather(coord.lat!!, coord.lon!!, APP_ID)!!
-                Timber.d("[getWeather] : $weatherInfo")
 
-                launch (Dispatchers.Main){
-                    settingsUI(weatherInfo!!)
-                }
-            }
-
+            getInfo()
 
         } else {
 
@@ -67,6 +58,16 @@ class MainActivity : AppCompatActivity() {
 
     private fun getInfo() {
 
+        locationInfo = locationManage.getLocation()
+        //TODO  * getWeather 구현
+        GlobalScope.launch {
+            weatherInfo = weatherManage.getWeather(locationInfo[0].latitude, locationInfo[0].longitude, APP_ID)!!
+            Timber.d("[getWeather] : $weatherInfo")
+
+            launch (Dispatchers.Main){
+                settingsUI(weatherInfo!!)
+            }
+        }
     }
 
 
