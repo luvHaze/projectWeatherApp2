@@ -2,6 +2,7 @@ package luv.zoey.projectweatherapp.ui
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.location.Address
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -109,6 +110,7 @@ class MainActivity : AppCompatActivity() {
         val currentWeatherCode = data.weather?.get(0)?.id
         val temperature = String.format("%.1f", data.main?.temp?.toDouble()?.minus(273.15))
         var weatherStatus = ""
+        anime_view.setColorFilter(Color.BLACK)
 
         when (currentWeatherCode) {
             in 200..299 -> {
