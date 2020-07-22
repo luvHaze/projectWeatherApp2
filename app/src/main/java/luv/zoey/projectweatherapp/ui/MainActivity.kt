@@ -3,18 +3,26 @@ package luv.zoey.projectweatherapp.ui
 import android.Manifest
 import android.content.pm.PackageManager
 import android.graphics.Color
+import android.graphics.ColorFilter
+import android.graphics.PorterDuff
+import android.graphics.PorterDuffColorFilter
 import android.location.Address
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.airbnb.lottie.LottieProperty
+import com.airbnb.lottie.model.KeyPath
+import com.airbnb.lottie.value.LottieFrameInfo
+import com.airbnb.lottie.value.SimpleLottieValueCallback
 import kotlinx.android.synthetic.main.activity_main.*
 import luv.zoey.projectweatherapp.R
-import luv.zoey.projectweatherapp.ui.viewmodel.MainViewModel
 import luv.zoey.projectweatherapp.data.WeatherResponse
+import luv.zoey.projectweatherapp.ui.viewmodel.MainViewModel
 import timber.log.Timber
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -62,10 +70,8 @@ class MainActivity : AppCompatActivity() {
         })
 
         viewmodel.weatherData.observe(this, Observer {
-          settingsWeatherUI(it)
+            settingsWeatherUI(it)
         })
-
-
 
     }
 
@@ -110,50 +116,70 @@ class MainActivity : AppCompatActivity() {
         val currentWeatherCode = data.weather?.get(0)?.id
         val temperature = String.format("%.1f", data.main?.temp?.toDouble()?.minus(273.15))
         var weatherStatus = ""
-        anime_view.setColorFilter(Color.BLACK)
+        var animationName = ""
+
 
         when (currentWeatherCode) {
             in 200..299 -> {
                 weatherStatus = "뇌우"
                 anime_view.setAnimation(R.raw.thunderstorm)
+                animationName = "thunderstorm"
             }
             in 300..399 -> {
                 weatherStatus = "이슬비"
                 anime_view.setAnimation(R.raw.light_rain)
+                animationName = "light_rain"
             }
             in 500..599 -> {
                 weatherStatus = "비"
                 anime_view.setAnimation(R.raw.rainy)
+                animationName = "rainy"
             }
             in 600..699 -> {
                 weatherStatus = "눈"
                 anime_view.setAnimation(R.raw.snow)
+                animationName = "snow"
             }
             in 700..761 -> {
                 weatherStatus = "안개"
                 anime_view.setAnimation(R.raw.foggy)
+                animationName = "foggy"
             }
             771 -> {
                 weatherStatus = "돌풍"
                 anime_view.setAnimation(R.raw.windy)
+                animationName = "windy"
             }
             781 -> {
                 weatherStatus = "토네이도"
                 anime_view.setAnimation(R.raw.windy)
+                animationName = "windy"
             }
             in 800..802 -> {
                 weatherStatus = "구름조금"
                 anime_view.setAnimation(R.raw.cloudy_little)
+                animationName = "cloudy_little"
             }
             in 803..804 -> {
                 weatherStatus = "구름많음"
                 anime_view.setAnimation(R.raw.cloudy_many)
+                animationName = "cloudy_many"
             }
             else -> {
                 weatherStatus = ""
-                anime_view.setAnimation(R.raw.cloudy_many)
             }
         }
+
+        anime_view.addValueCallback(
+            KeyPath("**"),
+            LottieProperty.COLOR_FILTER, {
+                PorterDuffColorFilter(
+                    Color.BLACK,
+                    PorterDuff.Mode.SRC_ATOP
+                )
+            }
+        )
+
         anime_view.playAnimation()
         temperature_TextView.text = temperature
         weatherStatus_Textview.text = weatherStatus

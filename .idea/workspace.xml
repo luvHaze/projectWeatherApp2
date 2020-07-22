@@ -16,13 +16,18 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/ui/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/ui/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/raw/thunderstorm.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/raw/thunderstorm.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/raw/cloudy_little.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/raw/cloudy_little.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/raw/cloudy_many.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/raw/cloudy_many.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/raw/foggy.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/raw/foggy.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/raw/light_rain.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/raw/light_rain.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/raw/rainy.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/raw/rainy.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/raw/snow.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/raw/snow.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/raw/sunny.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/raw/sunny.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/raw/windy.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/raw/windy.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +77,7 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/raw" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/lottie-android-colorfilter-sample-master" />
     <property name="project.structure.last.edited" value="Dependencies" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -230,7 +235,14 @@
       <option name="project" value="LOCAL" />
       <updated>1595410284607</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="# 구조변경 완료 (LiveData 사용 성공)&#10;&#10;#TODO &#10;- 위치변경시 애니메이션 색깔도 같이 변경되는점 고쳐야 함">
+      <created>1595413430776</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1595413430776</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -253,7 +265,8 @@
     <MESSAGE value="# 디자인 구조 변경 &amp; Add gitignore&#10;&#10;# TODO&#10;- 위치 변경시 다시 API 요청해서 값을 가져오는 부분 구현해야 함&#10;- 좀 더 간결한 구조로 개편해봐야 함" />
     <MESSAGE value="# 구조변경 (branch merge)" />
     <MESSAGE value="# 구조변경 완료 (LiveData 사용 성공)" />
-    <option name="LAST_COMMIT_MESSAGE" value="# 구조변경 완료 (LiveData 사용 성공)" />
+    <MESSAGE value="# 구조변경 완료 (LiveData 사용 성공)&#10;&#10;#TODO &#10;- 위치변경시 애니메이션 색깔도 같이 변경되는점 고쳐야 함" />
+    <option name="LAST_COMMIT_MESSAGE" value="# 구조변경 완료 (LiveData 사용 성공)&#10;&#10;#TODO &#10;- 위치변경시 애니메이션 색깔도 같이 변경되는점 고쳐야 함" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="178" width="816" height="730" key="#Intentions" timestamp="1595165545534">
@@ -264,10 +277,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="696" y="252" key="#PSD/0.0.1920.1040@0.0.1920.1040" timestamp="1594819232229" />
-    <state x="992" y="239" key="#com.intellij.ide.util.MemberChooser" timestamp="1595166602073">
+    <state x="992" y="239" key="#com.intellij.ide.util.MemberChooser" timestamp="1595422174811">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="992" y="239" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1595166602073" />
+    <state x="992" y="239" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1595422174811" />
     <state x="929" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1594820004912">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -280,14 +293,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1202" y="25" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1594914221987" />
-    <state x="1045" y="0" key="CommitChangelistDialog2" timestamp="1595410283556">
+    <state x="1045" y="0" key="CommitChangelistDialog2" timestamp="1595413429473">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1045" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1595410283556" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1595153111278">
+    <state x="1045" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1595413429473" />
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1595421735162">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1595153111278" />
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1595421735162" />
     <state x="1101" y="379" width="446" height="219" key="Github.ShareDialog" timestamp="1594913790054">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -316,10 +329,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1595140834836" />
-    <state x="803" y="252" key="Vcs.Push.Dialog.v2" timestamp="1595410293078">
+    <state x="803" y="252" key="Vcs.Push.Dialog.v2" timestamp="1595413432277">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="803" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1595410293078" />
+    <state x="803" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1595413432277" />
     <state x="92" y="92" width="1736" height="856" key="com.intellij.dvcs.ui.CompareBranchesDialog" timestamp="1595167447273">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
