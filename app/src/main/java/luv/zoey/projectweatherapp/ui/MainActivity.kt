@@ -1,65 +1,87 @@
 package luv.zoey.projectweatherapp.ui
 
 import android.Manifest
-import android.content.Context
 import android.content.pm.PackageManager
 import android.location.Address
-import android.location.Geocoder
-import android.location.LocationManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
-import com.google.gson.Gson
-import com.google.gson.JsonObject
+import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import luv.zoey.projectweatherapp.R
-import luv.zoey.projectweatherapp.api.RetrofitClient
-import luv.zoey.projectweatherapp.api.WeatherAPI
-import luv.zoey.projectweatherapp.data.CoordDTO
+import luv.zoey.projectweatherapp.ui.viewmodel.LocationViewModel
+import luv.zoey.projectweatherapp.ui.viewmodel.WeatherViewModel
 import luv.zoey.projectweatherapp.data.WeatherResponse
 import luv.zoey.projectweatherapp.others.Constants.APP_ID
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
 import timber.log.Timber
-import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
     val LOCATION_REQUEST = 1000
 
-    lateinit var locationInfo: MutableList<Address>
+    var locationInfo: Address? = null
+    var weatherInfo: WeatherResponse? = null
 
-    lateinit var geocoder: Geocoder
-    lateinit var coordDTO: CoordDTO
-    lateinit var retrofitInstance: Retrofit
-    lateinit var service: WeatherAPI
+    val locationViewModel = ViewModelProvider.AndroidViewModelFactory(application)
+        .create(LocationViewModel::class.java)
+    val weatherViewModel = ViewModelProvider.AndroidViewModelFactory(application)
+        .create(WeatherViewModel::class.java)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        init()
-
-    }
-
-    private fun init() {
-        geocoder = Geocoder(applicationContext, Locale.KOREAN)
-        retrofitInstance = RetrofitClient.getInstance()
-
         if (checkPermissions()) {
-            coordDTO = getCoord()   // 1. 위도 경도 가져오기
-            locationInfo = getLocation(coordDTO) // 2. 위도경도로 현재위치정보 가져오기
-            getWeather(coordDTO.lat!!, coordDTO.lon!!, APP_ID) // 현재위치 정보로
 
-            Timber.d("[response] : $locationInfo")
+            getInfomation()
+
         } else {
-            Timber.d("권한으로 인해 위치정보 가져오지 못함")
+
+            Toast.makeText(this, "권한 요청 필요", Toast.LENGTH_LONG).show()
+            requestPermissions(
+                arrayOf(
+                    Manifest.permission.ACCESS_COARSE_LOCATION,
+                    Manifest.permission.ACCESS_FINE_LOCATION
+                ), LOCATION_REQUEST
+            )
+
+        }
+
+        settings_button.setOnClickListener {
+            Timber.d("[WeatherViewModel data] :$weatherInfo")
         }
 
     }
 
+    // 위치랑 날씨정보 획득
+    private fun getInfomation() {
+
+        //위치정보
+        locationInfo = locationViewModel.getLocation(applicationContext)
+        Timber.d("[LocaitinViewmodel data] : $locationInfo")
+
+        //날짜정보 (날시정보는 얻는대로 바로 UI에 붙여줌 )
+        CoroutineScope(Dispatchers.IO).launch {
+            weatherInfo = weatherViewModel.getWeather(
+                locationInfo!!.latitude,
+                locationInfo!!.longitude,
+                APP_ID
+            )
+            Timber.d("[WeatherViewModel data] :$weatherInfo")
+
+            CoroutineScope(Dispatchers.Main).launch {
+                settingsUI(weatherInfo!!, locationInfo!!)
+            }
+
+        }
+
+    }
+
+    // 권한 체크
     private fun checkPermissions(): Boolean {
 
         val isGranted =
@@ -93,64 +115,15 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // 1. Location Managet로 위도 경도 구하기
-    private fun getCoord(): CoordDTO {
-        try {
-            val locationManager: LocationManager =
-                getSystemService(Context.LOCATION_SERVICE) as LocationManager
-            val currentLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
 
-            return CoordDTO(
-                currentLocation.longitude,
-                currentLocation.latitude
-            )
-        } catch (e: SecurityException) {
-            e.printStackTrace()
-        }
-
-        return CoordDTO(null, null)
-    }
-
-    // 2. Geocoder로 위도 경로로 현재 위치 구하기
-    private fun getLocation(coordDTO: CoordDTO): MutableList<Address> {
-        return geocoder.getFromLocation(coordDTO.lat!!, coordDTO.lon!!, 1)
-    }
-
-    // 3. Retrofit2을 이용해 OpenWeatherAPI에 위도 경도를 토대로 날씨정보 요청
-    private fun getWeather(lat: Double, lon: Double, app_id: String) {
-        service = retrofitInstance.create(WeatherAPI::class.java)
-
-        val call: Call<JsonObject> = service.getWeatherbyCoord(lat, lon, app_id)
-        call.enqueue(object : Callback<JsonObject> {
-
-            lateinit var data: WeatherResponse
-
-            override fun onFailure(call: Call<JsonObject>, t: Throwable) {
-                Timber.d(t)
-            }
-
-            override fun onResponse(
-                call: Call<JsonObject>,
-                response: Response<JsonObject>
-            ) {
-                data = Gson().fromJson(response.body(), WeatherResponse::class.java)
-                Timber.d("[response] : ${data}")
-                settingsUI(data)
-
-            }
-
-        })
-    }
-
-    // UI 수정
-    private fun settingsUI(data: WeatherResponse) {
+    // UI 설정
+    private fun settingsUI(data: WeatherResponse, locationInfo: Address) {
 
         val currentWeatherCode = data.weather?.get(0)?.id
-        val adminArea = locationInfo[0].adminArea
-        val subAdminArea = locationInfo[0].thoroughfare
+        val adminArea = locationInfo.adminArea
+        val subAdminArea = locationInfo.thoroughfare
         val temperature = String.format("%.1f", data.main?.temp?.toDouble()?.minus(273.15))
         var weatherStatus = ""
-        var weatherAnimation = 0
 
         when (currentWeatherCode) {
             in 200..299 -> {
@@ -189,7 +162,10 @@ class MainActivity : AppCompatActivity() {
                 weatherStatus = "구름많음"
                 anime_view.setAnimation(R.raw.cloudy_many)
             }
-            else -> weatherStatus = ""
+            else -> {
+                weatherStatus = ""
+                anime_view.setAnimation(R.raw.cloudy_many)
+            }
         }
 
         anime_view.playAnimation()
