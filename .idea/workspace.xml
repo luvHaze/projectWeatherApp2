@@ -11,7 +11,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="13147b00-3350-4186-9048-437cf0d6fbec" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/repository/MainRepository.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_databinding_databinding_adapters_4_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_databinding_databinding_common_4_0_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_databinding_databinding_runtime_4_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_databinding_viewbinding_4_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/ui/viewmodel/LocationViewModel.kt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/build/build-attribution/androidGradlePluginAttributionData" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
@@ -21,14 +25,18 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/api/WeatherAPI.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/api/WeatherAPI.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/data/CoordDTO.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/data/LocationManage.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/repository/LocationManage.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/data/WeatherManage.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/repository/WeatherManage.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/data/WeatherResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/data/WeatherResponse.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/repository/LocationManage.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/repository/MainRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/repository/MainRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/repository/WeatherManage.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/ui/viewmodel/WeatherViewModel.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/ui/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/ui/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/ui/viewmodel/MainViewModel.kt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,8 +61,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Kotlin Object" />
-        <option value="Kotlin Class" />
         <option value="Kotlin File" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -75,17 +83,18 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Table/CodingArea/idontknowMVVM" />
     <property name="project.structure.last.edited" value="Dependencies" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateKotlinClassDialog.RecentsKey">
-      <recent name="luv.zoey.projectweatherapp.data" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Zoey\Desktop\gitHub\projectWeatherApp\app\src\main\res\font" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="luv.zoey.projectweatherapp.ui.viewmodel" />
       <recent name="luv.zoey.projectweatherapp.repository" />
       <recent name="luv.zoey.projectweatherapp.ui" />
       <recent name="luv.zoey.projectweatherapp.api" />
@@ -95,8 +104,8 @@
       <recent name="C:\Users\Zoey\Desktop\gitHub\projectWeatherApp\app\src\main\res\raw" />
       <recent name="C:\Users\Zoey\Desktop\gitHub\projectWeatherApp\app\src\main\res\font" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Zoey\Desktop\gitHub\projectWeatherApp\app\src\main\res\font" />
+    <key name="CreateKotlinClassDialog.RecentsKey">
+      <recent name="luv.zoey.projectweatherapp.data" />
     </key>
   </component>
   <component name="RunManager">
@@ -226,7 +235,14 @@
       <option name="project" value="LOCAL" />
       <updated>1595317940053</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="# 전체 구조변경완료 (CoordDTO 제거)&#10;&#10;# TODO&#10;- 주기적으로 위치를 잡아서 날씨요청을 하는기능&#10;- 위치가 바뀌면 알아차려서 날씨 요철을 하는 기능">
+      <created>1595324122524</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1595324122524</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -238,17 +254,18 @@
     <MESSAGE value="# 전체 구조변경중 (branch)&#10;&#10;# TODO&#10;- 현재 getWeather 부분에서 enqueue를 사용하면 내가 원한대로 리턴 하는것이 불가능 하기 때문에 execute를 사용해야한다.&#10;- execute를 사용하려면 비동기 처리를 직접 해줘야한다.&#10;- coroutines와 retrofit에 대한 이해가 좀더 필요" />
     <MESSAGE value="# 전체 구조변경중 (branch)&#10;&#10;# TODO&#10;- 비동기, 동기 처리 방식 좀더 공부 하고 고쳐보자&#10;- Coroutines, Retrofit2" />
     <MESSAGE value="# 전체 구조변경완료&#10;&#10;# TODO&#10;- 주기적으로 위치를 잡아서 날씨요청을 하는기능&#10;- 위치가 바뀌면 알아차려서 날씨 요철을 하는 기능" />
-    <option name="LAST_COMMIT_MESSAGE" value="# 전체 구조변경완료&#10;&#10;# TODO&#10;- 주기적으로 위치를 잡아서 날씨요청을 하는기능&#10;- 위치가 바뀌면 알아차려서 날씨 요철을 하는 기능" />
+    <MESSAGE value="# 전체 구조변경완료 (CoordDTO 제거)&#10;&#10;# TODO&#10;- 주기적으로 위치를 잡아서 날씨요청을 하는기능&#10;- 위치가 바뀌면 알아차려서 날씨 요철을 하는 기능" />
+    <option name="LAST_COMMIT_MESSAGE" value="# 전체 구조변경완료 (CoordDTO 제거)&#10;&#10;# TODO&#10;- 주기적으로 위치를 잡아서 날씨요청을 하는기능&#10;- 위치가 바뀌면 알아차려서 날씨 요철을 하는 기능" />
   </component>
   <component name="WindowStateProjectService">
     <state x="696" y="252" key="#PSD" timestamp="1594819232229">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="696" y="252" key="#PSD/0.0.1920.1040@0.0.1920.1040" timestamp="1594819232229" />
-    <state x="992" y="239" key="#com.intellij.ide.util.MemberChooser" timestamp="1595323131961">
+    <state x="992" y="239" key="#com.intellij.ide.util.MemberChooser" timestamp="1595378631874">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="992" y="239" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1595323131961" />
+    <state x="992" y="239" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1595378631874" />
     <state x="878" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1595262989769">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -257,38 +274,38 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1595323762646" />
-    <state x="1202" y="25" width="457" height="996" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog" timestamp="1595323431611">
+    <state x="1202" y="25" width="475" height="996" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog" timestamp="1595379658296">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1202" y="25" width="457" height="996" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1595323431611" />
-    <state x="886" y="0" key="CommitChangelistDialog2" timestamp="1595317938675">
+    <state x="1202" y="25" width="475" height="996" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1595379658296" />
+    <state x="886" y="0" key="CommitChangelistDialog2" timestamp="1595324121132">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="886" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1595317938675" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1595258680872">
+    <state x="886" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1595324121132" />
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1595383507427">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1595258680872" />
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1595383507427" />
     <state x="1101" y="379" width="446" height="219" key="Github.ShareDialog" timestamp="1594913790054">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1101" y="379" width="446" height="219" key="Github.ShareDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1594913790054" />
-    <state width="1877" height="192" key="GridCell.Tab.0.bottom" timestamp="1595323866150">
+    <state width="1340" height="65" key="GridCell.Tab.0.bottom" timestamp="1595383311110">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="192" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1595323866150" />
-    <state width="1877" height="192" key="GridCell.Tab.0.center" timestamp="1595323866150">
+    <state width="1340" height="65" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1595383311110" />
+    <state width="1340" height="65" key="GridCell.Tab.0.center" timestamp="1595383311110">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="192" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1595323866150" />
-    <state width="1877" height="192" key="GridCell.Tab.0.left" timestamp="1595323866150">
+    <state width="1340" height="65" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1595383311110" />
+    <state width="1340" height="65" key="GridCell.Tab.0.left" timestamp="1595383311110">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="192" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1595323866150" />
-    <state width="1877" height="192" key="GridCell.Tab.0.right" timestamp="1595323866150">
+    <state width="1340" height="65" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1595383311110" />
+    <state width="1340" height="65" key="GridCell.Tab.0.right" timestamp="1595383311110">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="192" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1595323866150" />
+    <state width="1340" height="65" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1595383311110" />
     <state x="677" y="162" key="SettingsEditor" timestamp="1594964836707">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -297,14 +314,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1595140834836" />
-    <state x="803" y="252" key="Vcs.Push.Dialog.v2" timestamp="1595317943604">
+    <state x="803" y="252" key="Vcs.Push.Dialog.v2" timestamp="1595324123730">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="803" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1595317943604" />
-    <state x="629" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1595316331320">
+    <state x="803" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1595324123730" />
+    <state x="629" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1595384352022">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="629" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1595316331320" />
+    <state x="629" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1595384352022" />
     <state x="877" y="293" key="git4idea.merge.GitPullDialog" timestamp="1594975715041">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

@@ -7,13 +7,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
+import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import luv.zoey.projectweatherapp.R
-import luv.zoey.projectweatherapp.repository.LocationManage
-import luv.zoey.projectweatherapp.repository.WeatherManage
+import luv.zoey.projectweatherapp.ui.viewmodel.LocationViewModel
+import luv.zoey.projectweatherapp.ui.viewmodel.WeatherViewModel
 import luv.zoey.projectweatherapp.data.WeatherResponse
 import luv.zoey.projectweatherapp.others.Constants.APP_ID
 import timber.log.Timber
@@ -22,25 +23,21 @@ class MainActivity : AppCompatActivity() {
 
     val LOCATION_REQUEST = 1000
 
-    lateinit var locationInfo: MutableList<Address>
+    var locationInfo: Address? = null
     var weatherInfo: WeatherResponse? = null
-    var weatherInfo2: WeatherResponse? = null
 
-    lateinit var locationManage: LocationManage
-    lateinit var weatherManage: WeatherManage
+    val locationViewModel = ViewModelProvider.AndroidViewModelFactory(application)
+        .create(LocationViewModel::class.java)
+    val weatherViewModel = ViewModelProvider.AndroidViewModelFactory(application)
+        .create(WeatherViewModel::class.java)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        locationManage = LocationManage(
-            applicationContext
-        )
-        weatherManage = WeatherManage()
-
         if (checkPermissions()) {
 
-            getInfo()
+            getInfomation()
 
         } else {
 
@@ -54,23 +51,37 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-    }
-
-    private fun getInfo() {
-
-        locationInfo = locationManage.getLocation()
-        //TODO  * getWeather 구현
-        GlobalScope.launch {
-            weatherInfo = weatherManage.getWeather(locationInfo[0].latitude, locationInfo[0].longitude, APP_ID)!!
-            Timber.d("[getWeather] : $weatherInfo")
-
-            launch (Dispatchers.Main){
-                settingsUI(weatherInfo!!)
-            }
+        settings_button.setOnClickListener {
+            Timber.d("[WeatherViewModel data] :$weatherInfo")
         }
+
     }
 
+    // 위치랑 날씨정보 획득
+    private fun getInfomation() {
 
+        //위치정보
+        locationInfo = locationViewModel.getLocation(applicationContext)
+        Timber.d("[LocaitinViewmodel data] : $locationInfo")
+
+        //날짜정보 (날시정보는 얻는대로 바로 UI에 붙여줌 )
+        CoroutineScope(Dispatchers.IO).launch {
+            weatherInfo = weatherViewModel.getWeather(
+                locationInfo!!.latitude,
+                locationInfo!!.longitude,
+                APP_ID
+            )
+            Timber.d("[WeatherViewModel data] :$weatherInfo")
+
+            CoroutineScope(Dispatchers.Main).launch {
+                settingsUI(weatherInfo!!, locationInfo!!)
+            }
+
+        }
+
+    }
+
+    // 권한 체크
     private fun checkPermissions(): Boolean {
 
         val isGranted =
@@ -105,12 +116,12 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    // UI 수정
-    private fun settingsUI(data: WeatherResponse) {
+    // UI 설정
+    private fun settingsUI(data: WeatherResponse, locationInfo: Address) {
 
         val currentWeatherCode = data.weather?.get(0)?.id
-        val adminArea = locationInfo[0].adminArea
-        val subAdminArea = locationInfo[0].thoroughfare
+        val adminArea = locationInfo.adminArea
+        val subAdminArea = locationInfo.thoroughfare
         val temperature = String.format("%.1f", data.main?.temp?.toDouble()?.minus(273.15))
         var weatherStatus = ""
 
