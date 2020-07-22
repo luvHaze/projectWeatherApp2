@@ -7,16 +7,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import luv.zoey.projectweatherapp.R
-import luv.zoey.projectweatherapp.ui.viewmodel.LocationViewModel
-import luv.zoey.projectweatherapp.ui.viewmodel.WeatherViewModel
+import luv.zoey.projectweatherapp.ui.viewmodel.MainViewModel
 import luv.zoey.projectweatherapp.data.WeatherResponse
-import luv.zoey.projectweatherapp.others.Constants.APP_ID
 import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
@@ -26,14 +22,14 @@ class MainActivity : AppCompatActivity() {
     var locationInfo: Address? = null
     var weatherInfo: WeatherResponse? = null
 
-    val locationViewModel = ViewModelProvider.AndroidViewModelFactory(application)
-        .create(LocationViewModel::class.java)
-    val weatherViewModel = ViewModelProvider.AndroidViewModelFactory(application)
-        .create(WeatherViewModel::class.java)
+    val viewmodel = ViewModelProvider.AndroidViewModelFactory(application)
+        .create(MainViewModel::class.java)
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
 
         if (checkPermissions()) {
 
@@ -51,9 +47,6 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        settings_button.setOnClickListener {
-            Timber.d("[WeatherViewModel data] :$weatherInfo")
-        }
 
     }
 
@@ -61,23 +54,17 @@ class MainActivity : AppCompatActivity() {
     private fun getInfomation() {
 
         //위치정보
-        locationInfo = locationViewModel.getLocation(applicationContext)
+        viewmodel.getLocation(applicationContext)
         Timber.d("[LocaitinViewmodel data] : $locationInfo")
+        viewmodel.locationData.observe(this, Observer {
+            settingsLocationUI(it)
+        })
 
-        //날짜정보 (날시정보는 얻는대로 바로 UI에 붙여줌 )
-        CoroutineScope(Dispatchers.IO).launch {
-            weatherInfo = weatherViewModel.getWeather(
-                locationInfo!!.latitude,
-                locationInfo!!.longitude,
-                APP_ID
-            )
-            Timber.d("[WeatherViewModel data] :$weatherInfo")
+        viewmodel.weatherData.observe(this, Observer {
+          settingsWeatherUI(it)
+        })
 
-            CoroutineScope(Dispatchers.Main).launch {
-                settingsUI(weatherInfo!!, locationInfo!!)
-            }
 
-        }
 
     }
 
@@ -117,11 +104,9 @@ class MainActivity : AppCompatActivity() {
 
 
     // UI 설정
-    private fun settingsUI(data: WeatherResponse, locationInfo: Address) {
+    fun settingsWeatherUI(data: WeatherResponse) {
 
         val currentWeatherCode = data.weather?.get(0)?.id
-        val adminArea = locationInfo.adminArea
-        val subAdminArea = locationInfo.thoroughfare
         val temperature = String.format("%.1f", data.main?.temp?.toDouble()?.minus(273.15))
         var weatherStatus = ""
 
@@ -167,13 +152,18 @@ class MainActivity : AppCompatActivity() {
                 anime_view.setAnimation(R.raw.cloudy_many)
             }
         }
-
         anime_view.playAnimation()
-
-        adminArea_Textview.text = adminArea
-        subAdminArea_Textview.text = subAdminArea
         temperature_TextView.text = temperature
         weatherStatus_Textview.text = weatherStatus
+    }
+
+    fun settingsLocationUI(data: Address){
+        adminArea_Textview.text = data.adminArea
+        if(data.locality.isNullOrEmpty()){
+            subAdminArea_Textview.text = data.thoroughfare
+        } else {
+            subAdminArea_Textview.text = "${data.locality} ${data.thoroughfare}"
+        }
     }
 
 }
