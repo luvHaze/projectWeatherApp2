@@ -27,13 +27,8 @@ import timber.log.Timber
 class MainActivity : AppCompatActivity() {
 
     val LOCATION_REQUEST = 1000
-
-    var locationInfo: Address? = null
-    var weatherInfo: WeatherResponse? = null
-
     val viewmodel = ViewModelProvider.AndroidViewModelFactory(application)
         .create(MainViewModel::class.java)
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +51,14 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+        settings_button.setOnClickListener {
+            if(viewmodel.weatherData.value == null) {
+                Toast.makeText(this, "데이터 비어있음", Toast.LENGTH_LONG).show()
+            } else {
+                Toast.makeText(this, "${viewmodel.weatherData.value}", Toast.LENGTH_LONG).show()
+            }
+        }
+
 
     }
 
@@ -64,7 +67,7 @@ class MainActivity : AppCompatActivity() {
 
         //위치정보
         viewmodel.getLocation(applicationContext)
-        Timber.d("[LocaitinViewmodel data] : $locationInfo")
+        Timber.d("[LocaitinViewmodel data] : ${viewmodel.locationData.value}")
         viewmodel.locationData.observe(this, Observer {
             settingsLocationUI(it)
         })
@@ -73,40 +76,6 @@ class MainActivity : AppCompatActivity() {
             settingsWeatherUI(it)
         })
 
-    }
-
-    // 권한 체크
-    private fun checkPermissions(): Boolean {
-
-        val isGranted =
-            ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) == PackageManager.PERMISSION_GRANTED &&
-                    ActivityCompat.checkSelfPermission(
-                        this,
-                        Manifest.permission.ACCESS_FINE_LOCATION
-                    ) == PackageManager.PERMISSION_GRANTED
-
-        if (!isGranted) {
-            ActivityCompat.requestPermissions(
-                this, arrayOf(
-                    Manifest.permission.ACCESS_COARSE_LOCATION,
-                    Manifest.permission.ACCESS_FINE_LOCATION
-                ), LOCATION_REQUEST
-            )
-
-            return ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) == PackageManager.PERMISSION_GRANTED &&
-                    ActivityCompat.checkSelfPermission(
-                        this,
-                        Manifest.permission.ACCESS_FINE_LOCATION
-                    ) == PackageManager.PERMISSION_GRANTED
-        } else {
-            return true
-        }
     }
 
 
@@ -180,6 +149,40 @@ class MainActivity : AppCompatActivity() {
             subAdminArea_Textview.text = data.thoroughfare
         } else {
             subAdminArea_Textview.text = "${data.locality} ${data.thoroughfare}"
+        }
+    }
+
+    // 권한 체크
+    private fun checkPermissions(): Boolean {
+
+        val isGranted =
+            ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED &&
+                    ActivityCompat.checkSelfPermission(
+                        this,
+                        Manifest.permission.ACCESS_FINE_LOCATION
+                    ) == PackageManager.PERMISSION_GRANTED
+
+        if (!isGranted) {
+            ActivityCompat.requestPermissions(
+                this, arrayOf(
+                    Manifest.permission.ACCESS_COARSE_LOCATION,
+                    Manifest.permission.ACCESS_FINE_LOCATION
+                ), LOCATION_REQUEST
+            )
+
+            return ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED &&
+                    ActivityCompat.checkSelfPermission(
+                        this,
+                        Manifest.permission.ACCESS_FINE_LOCATION
+                    ) == PackageManager.PERMISSION_GRANTED
+        } else {
+            return true
         }
     }
 

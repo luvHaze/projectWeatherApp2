@@ -11,23 +11,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="13147b00-3350-4186-9048-437cf0d6fbec" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/release/output.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/intermediates/lint-cache/maven.google/androidx/appcompat/group-index.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/intermediates/lint-cache/maven.google/androidx/constraintlayout/group-index.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/intermediates/lint-cache/maven.google/androidx/core/group-index.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/intermediates/lint-cache/maven.google/androidx/test/espresso/group-index.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/intermediates/lint-cache/maven.google/androidx/test/ext/group-index.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/intermediates/lint-cache/maven.google/master-index.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/intermediates/lint-cache/maven.google/org/jetbrains/kotlin/group-index.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/intermediates/lint-cache/sdk-registry.xml/sdk-registry.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hs_err_pid3380.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/replay_pid3380.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/BaseApplication.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/BaseApplication.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/data/WeatherResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/data/WeatherResponse.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/others/Constants.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/others/Constants.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/ui/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/ui/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/raw/cloudy_little.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/raw/cloudy_little.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/raw/cloudy_many.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/raw/cloudy_many.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/raw/foggy.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/raw/foggy.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/raw/light_rain.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/raw/light_rain.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/raw/rainy.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/raw/rainy.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/raw/snow.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/raw/snow.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/raw/sunny.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/raw/sunny.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/raw/windy.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/raw/windy.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,10 +69,15 @@
       </list>
     </option>
   </component>
+  <component name="GenerateSignedApkSettings">
+    <option name="KEY_STORE_PATH" value="C:\Users\Zoey\Desktop\weather1.jks" />
+    <option name="KEY_ALIAS" value="key0" />
+    <option name="BUILD_TARGET_KEY" value="apk" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="LiveDataApply" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -76,8 +94,14 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ApkExportedModule" value="app" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Pixel_2_API_27" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-07-23T14:09:07.840Z" />
+    <property name="ExportApk.ApkPath" value="C:\Users\Zoey\Desktop\gitHub\projectWeatherApp2\app" />
+    <property name="ExportApk.BuildVariants" value="release" />
+    <property name="ExportApk.SignV2" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/lottie-android-colorfilter-sample-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Dependencies" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -250,7 +274,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -277,10 +303,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="696" y="252" key="#PSD/0.0.1920.1040@0.0.1920.1040" timestamp="1594819232229" />
-    <state x="992" y="239" key="#com.intellij.ide.util.MemberChooser" timestamp="1595422174811">
+    <state x="992" y="239" key="#com.intellij.ide.util.MemberChooser" timestamp="1595515341823">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="992" y="239" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1595422174811" />
+    <state x="992" y="239" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1595515341823" />
     <state x="929" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1594820004912">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -297,10 +323,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1045" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1595413429473" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1595421735162">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1595513934095">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1595421735162" />
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1595513934095" />
     <state x="1101" y="379" width="446" height="219" key="Github.ShareDialog" timestamp="1594913790054">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -337,10 +363,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="com.intellij.dvcs.ui.CompareBranchesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1595167447273" />
-    <state x="629" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1595139113290">
+    <state x="629" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1595513797461">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="629" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1595139113290" />
+    <state x="629" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1595513797461" />
     <state x="877" y="293" key="git4idea.merge.GitPullDialog" timestamp="1594975715041">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -353,9 +379,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1079" y="244" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1594822600996" />
-    <state x="874" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1594975706052">
+    <state x="874" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1595513590765">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="874" y="230" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1594975706052" />
+    <state x="874" y="230" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1595513590765" />
   </component>
 </project>

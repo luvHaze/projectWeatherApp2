@@ -29,40 +29,59 @@ data class WeatherResponse (
     var cod: Int?
 ){
     data class Coord(
+        @SerializedName("lat")
         var lat: Double,
+        @SerializedName("lon")
         var lon: Double
 
     )
 
     data class Weather(
+        @SerializedName("id")
         var id: Int,
+        @SerializedName("main")
         var main: String,
+        @SerializedName("description")
         var description: String,
+        @SerializedName("icon")
         var icon: String
     )
 
     data class Temperature(
+        @SerializedName("temp")
         var temp: Float,
+        @SerializedName("pressure")
         var pressure: Float,
+        @SerializedName("temp_min")
         var temp_min: Float,
+        @SerializedName("temp_max")
         var temp_max: Float
     )
 
     data class Clouds(
+        @SerializedName("all")
         var all: Int
     )
 
     data class Wind(
+        @SerializedName("speed")
         var speed: Float,
+        @SerializedName("deg")
         var deg: Float
     )
 
     data class System(
+        @SerializedName("type")
         var type: Int,
+        @SerializedName("id")
         var id: Int,
+        @SerializedName("message")
         var message: Float,
+        @SerializedName("country")
         var country: String,
+        @SerializedName("sunrise")
         var sunrise: Int,
+        @SerializedName("sunset")
         var sunset: Int
     )
 }
