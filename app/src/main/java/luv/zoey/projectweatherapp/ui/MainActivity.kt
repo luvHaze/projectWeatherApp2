@@ -51,15 +51,6 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        settings_button.setOnClickListener {
-            if(viewmodel.weatherData.value == null) {
-                Toast.makeText(this, "데이터 비어있음", Toast.LENGTH_LONG).show()
-            } else {
-                Toast.makeText(this, "${viewmodel.weatherData.value}", Toast.LENGTH_LONG).show()
-            }
-        }
-
-
     }
 
     // 위치랑 날씨정보 획득

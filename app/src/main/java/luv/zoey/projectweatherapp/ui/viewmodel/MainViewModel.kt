@@ -60,7 +60,7 @@ class MainViewModel : ViewModel() {
                     requestLocation()
 
                     CoroutineScope(Dispatchers.IO).launch{
-                        requestWeather(locationData.value!!.latitude,locationData.value!!.longitude,APP_ID)
+                        requestWeather(locationData.value!!.latitude,locationData.value!!.longitude)
                     }
 
                     Timber.d("${locationData.value}")
@@ -86,9 +86,9 @@ class MainViewModel : ViewModel() {
 
 
     // [Weather Part]
-    suspend private fun requestWeather(lat: Double, lon: Double, app_id: String) {
+    suspend private fun requestWeather(lat: Double, lon: Double) {
 
-        val call = RetrofitInstance.api.getWeatherbyCoord(lat, lon, app_id)
+        val call = RetrofitInstance.api.getWeatherbyCoord(lat, lon)
         val response = call.execute()
 
         if (response.isSuccessful) {
