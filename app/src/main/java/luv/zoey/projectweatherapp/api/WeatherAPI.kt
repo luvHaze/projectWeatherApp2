@@ -21,7 +21,7 @@ interface WeatherAPI {
     fun getDailyWeatherbyCoord(
         @Query("lat") lat: Double,
         @Query("lon") lon: Double,
-        @Query("appid") cnt: Int = 7,   // 7일치 데이터 가져오고자 함
+        @Query("cnt") cnt: Int = 7,   // 7일치 데이터 가져오고자 함
         @Query("appid") appid: String = APP_ID
     ) : Call<JsonObject>
 

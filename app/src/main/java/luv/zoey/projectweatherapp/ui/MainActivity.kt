@@ -51,6 +51,10 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+        settings_button.setOnClickListener {
+            Timber.d("${viewmodel.dailyWeatherData.value}")
+        }
+
     }
 
     // 위치랑 날씨정보 획득
@@ -66,6 +70,7 @@ class MainActivity : AppCompatActivity() {
         viewmodel.weatherData.observe(this, Observer {
             settingsWeatherUI(it)
         })
+
 
     }
 

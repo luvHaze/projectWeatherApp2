@@ -11,6 +11,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import luv.zoey.projectweatherapp.api.RetrofitInstance
+import luv.zoey.projectweatherapp.data.DailyWeatherResponse
 import luv.zoey.projectweatherapp.data.WeatherResponse
 import luv.zoey.projectweatherapp.others.Constants.APP_ID
 import timber.log.Timber
@@ -24,6 +25,7 @@ class MainViewModel : ViewModel() {
 
     var locationData = MutableLiveData<Address>()
     var weatherData = MutableLiveData<WeatherResponse>()
+    var dailyWeatherData = MutableLiveData<DailyWeatherResponse>()
 
     @SuppressLint("MissingPermission")
     private fun requestLocation() {
@@ -61,6 +63,7 @@ class MainViewModel : ViewModel() {
 
                     CoroutineScope(Dispatchers.IO).launch{
                         requestWeather(locationData.value!!.latitude,locationData.value!!.longitude)
+                        requestDailyWeather(locationData.value!!.latitude,locationData.value!!.longitude)
                     }
 
                     Timber.d("${locationData.value}")
@@ -94,6 +97,17 @@ class MainViewModel : ViewModel() {
         if (response.isSuccessful) {
             weatherData.postValue(Gson().fromJson(response.body(), WeatherResponse::class.java))
         }
+    }
+
+    suspend private fun requestDailyWeather(lat: Double, lon: Double) {
+
+        val call = RetrofitInstance.api.getDailyWeatherbyCoord(lat, lon)
+        val response = call.execute()
+
+        if (response.isSuccessful) {
+            dailyWeatherData.postValue(Gson().fromJson(response.body(), DailyWeatherResponse::class.java))
+        }
+
     }
 
 
