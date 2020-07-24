@@ -95,7 +95,7 @@ class MainViewModel : ViewModel() {
 
     suspend private fun requestDailyWeather(lat: Double, lon: Double) {
 
-        val call2 = RetrofitInstance.api.getDailyWeatherbyCoord(lat, lon,4, APP_ID)
+        val call2 = RetrofitInstance.api.getDailyWeatherbyCoord(lat, lon, APP_ID)
         val response = call2.execute()
 
         if (response.isSuccessful) {

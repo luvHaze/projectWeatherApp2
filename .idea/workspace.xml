@@ -21,13 +21,10 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/api/RetrofitInstance.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/api/RetrofitInstance.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/api/WeatherAPI.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/api/WeatherAPI.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/data/DailyWeatherResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/data/DailyWeatherResponse.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/others/Constants.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/others/Constants.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/ui/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/ui/MainActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/ui/viewmodel/MainViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/luv/zoey/projectweatherapp/ui/viewmodel/MainViewModel.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -281,7 +278,14 @@
       <option name="project" value="LOCAL" />
       <updated>1595591153000</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="# mergeBranch (DailyWeather)&#10;&#10;- 내 API키는 FreeKey라서 Daily가 안된다고 한다..&#10;- 3hour 5days 기능으로 전환해야 함">
+      <created>1595598359911</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1595598359911</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -310,7 +314,8 @@
     <MESSAGE value="# proguard 문제는 공기계 구입하고 해결해보기로 함&#10;&#10;- 7일치 날짜 데이터 받아와서 화면에 뿌리는 연습 시작" />
     <MESSAGE value="# 7일치 날짜 불러오기 (POJO 제작)" />
     <MESSAGE value="# mergeBranch (DailyWeather)" />
-    <option name="LAST_COMMIT_MESSAGE" value="# mergeBranch (DailyWeather)" />
+    <MESSAGE value="# mergeBranch (DailyWeather)&#10;&#10;- 내 API키는 FreeKey라서 Daily가 안된다고 한다..&#10;- 3hour 5days 기능으로 전환해야 함" />
+    <option name="LAST_COMMIT_MESSAGE" value="# mergeBranch (DailyWeather)&#10;&#10;- 내 API키는 FreeKey라서 Daily가 안된다고 한다..&#10;- 3hour 5days 기능으로 전환해야 함" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="178" width="816" height="730" key="#Intentions" timestamp="1595165545534">
@@ -337,10 +342,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1202" y="25" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1594914221987" />
-    <state x="1045" y="0" key="CommitChangelistDialog2" timestamp="1595591152050">
+    <state x="1045" y="0" key="CommitChangelistDialog2" timestamp="1595598358400">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1045" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1595591152050" />
+    <state x="1045" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1595598358400" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1595513934095">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -373,10 +378,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1595140834836" />
-    <state x="803" y="252" key="Vcs.Push.Dialog.v2" timestamp="1595591158178">
+    <state x="803" y="252" key="Vcs.Push.Dialog.v2" timestamp="1595598374625">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="803" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1595591158178" />
+    <state x="803" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1595598374625" />
     <state x="417" y="128" width="1436" height="840" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1595595859893">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

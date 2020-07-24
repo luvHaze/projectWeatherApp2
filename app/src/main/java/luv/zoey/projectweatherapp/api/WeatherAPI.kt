@@ -17,11 +17,10 @@ interface WeatherAPI {
         @Query("lang") lang: String = "kr"
     ) : Call<JsonObject>
 
-    @GET("forecast/daily?")
+    @GET("forecast?")
     fun getDailyWeatherbyCoord(
         @Query("lat") lat: Double,
         @Query("lon") lon: Double,
-        @Query("cnt") cnt: Int,
         @Query("appid") appid: String// 7일치 데이터 가져오고자 함
     ) : Call<JsonObject>
 
