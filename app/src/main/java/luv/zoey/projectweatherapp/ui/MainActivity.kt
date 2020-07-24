@@ -55,6 +55,8 @@ class MainActivity : AppCompatActivity() {
             Timber.d("${viewmodel.dailyWeatherData.value}")
         }
 
+
+
     }
 
     // 위치랑 날씨정보 획득

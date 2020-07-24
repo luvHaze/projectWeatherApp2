@@ -19,9 +19,9 @@ import java.util.*
 
 class MainViewModel : ViewModel() {
 
-    var locationManager: LocationManager? = null
-    var geocoder: Geocoder? = null
-    var context: Context? = null
+    private var locationManager: LocationManager? = null
+    private var geocoder: Geocoder? = null
+    private var context: Context? = null
 
     var locationData = MutableLiveData<Address>()
     var weatherData = MutableLiveData<WeatherResponse>()
@@ -33,13 +33,7 @@ class MainViewModel : ViewModel() {
         geocoder = Geocoder(context, Locale.KOREAN)
 
         val coord = locationManager!!.getLastKnownLocation(LocationManager.GPS_PROVIDER)
-        locationData.postValue(
-            geocoder!!.getFromLocation(
-                coord!!.latitude,
-                coord!!.longitude,
-                1
-            )[0]
-        )
+        locationData.value = geocoder!!.getFromLocation(coord!!.latitude, coord!!.longitude, 1)[0]
 
         Timber.d("LIVE DATA : ${locationData.value}")
     }
@@ -91,7 +85,7 @@ class MainViewModel : ViewModel() {
     // [Weather Part]
     suspend private fun requestWeather(lat: Double, lon: Double) {
 
-        val call = RetrofitInstance.api.getWeatherbyCoord(lat, lon)
+        val call = RetrofitInstance.api.getWeatherbyCoord(lat, lon, APP_ID)
         val response = call.execute()
 
         if (response.isSuccessful) {
@@ -101,11 +95,13 @@ class MainViewModel : ViewModel() {
 
     suspend private fun requestDailyWeather(lat: Double, lon: Double) {
 
-        val call = RetrofitInstance.api.getDailyWeatherbyCoord(lat, lon)
-        val response = call.execute()
+        val call2 = RetrofitInstance.api.getDailyWeatherbyCoord(lat, lon,4, APP_ID)
+        val response = call2.execute()
 
         if (response.isSuccessful) {
             dailyWeatherData.postValue(Gson().fromJson(response.body(), DailyWeatherResponse::class.java))
+        } else {
+            Timber.d("데일리 데이터 불러오기 실패 : ${response.code()}")
         }
 
     }
