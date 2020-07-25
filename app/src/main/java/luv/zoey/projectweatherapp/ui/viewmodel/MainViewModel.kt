@@ -25,7 +25,7 @@ class MainViewModel : ViewModel() {
 
     var locationData = MutableLiveData<Address>()
     var weatherData = MutableLiveData<WeatherResponse>()
-    var dailyWeatherData = MutableLiveData<DailyWeatherResponse>()
+    var dailyWeatherData = MutableLiveData<List<DailyWeatherResponse.DailyData>>()
 
     @SuppressLint("MissingPermission")
     private fun requestLocation() {
@@ -99,7 +99,8 @@ class MainViewModel : ViewModel() {
         val response = call2.execute()
 
         if (response.isSuccessful) {
-            dailyWeatherData.postValue(Gson().fromJson(response.body(), DailyWeatherResponse::class.java))
+            dailyWeatherData.postValue(Gson().fromJson(response.body(), DailyWeatherResponse::class.java)
+                .list.filter { it.dt_txt.contains("12:00") })
         } else {
             Timber.d("데일리 데이터 불러오기 실패 : ${response.code()}")
         }

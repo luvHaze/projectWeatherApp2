@@ -13,15 +13,19 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.airbnb.lottie.LottieProperty
 import com.airbnb.lottie.model.KeyPath
 import com.airbnb.lottie.value.LottieFrameInfo
 import com.airbnb.lottie.value.SimpleLottieValueCallback
 import kotlinx.android.synthetic.main.activity_main.*
 import luv.zoey.projectweatherapp.R
+import luv.zoey.projectweatherapp.data.DailyWeatherResponse
 import luv.zoey.projectweatherapp.data.WeatherResponse
+import luv.zoey.projectweatherapp.ui.adapter.DailyRecyclerAdapter
 import luv.zoey.projectweatherapp.ui.viewmodel.MainViewModel
 import timber.log.Timber
+import java.text.SimpleDateFormat
 
 
 class MainActivity : AppCompatActivity() {
@@ -51,6 +55,7 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+
         settings_button.setOnClickListener {
             Timber.d("${viewmodel.dailyWeatherData.value}")
         }
@@ -73,11 +78,26 @@ class MainActivity : AppCompatActivity() {
             settingsWeatherUI(it)
         })
 
+        viewmodel.dailyWeatherData.observe(this, Observer {
+            var lm = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
+            var adapter = DailyRecyclerAdapter(it)
+            dailyWeather_recyclerview.layoutManager = lm
+            dailyWeather_recyclerview.adapter = adapter
+        })
+
 
     }
 
 
-    // UI 설정
+    fun settingsLocationUI(data: Address){
+        adminArea_Textview.text = data.adminArea
+        if(data.locality.isNullOrEmpty()){
+            subAdminArea_Textview.text = data.thoroughfare
+        } else {
+            subAdminArea_Textview.text = "${data.locality} ${data.thoroughfare}"
+        }
+    }
+
     fun settingsWeatherUI(data: WeatherResponse) {
 
         val currentWeatherCode = data.weather?.get(0)?.id
@@ -141,13 +161,8 @@ class MainActivity : AppCompatActivity() {
         weatherStatus_Textview.text = weatherStatus
     }
 
-    fun settingsLocationUI(data: Address){
-        adminArea_Textview.text = data.adminArea
-        if(data.locality.isNullOrEmpty()){
-            subAdminArea_Textview.text = data.thoroughfare
-        } else {
-            subAdminArea_Textview.text = "${data.locality} ${data.thoroughfare}"
-        }
+    private fun settingsDailyWeatherUI(data: DailyWeatherResponse?) {
+        TODO("Not yet implemented")
     }
 
     // 권한 체크
