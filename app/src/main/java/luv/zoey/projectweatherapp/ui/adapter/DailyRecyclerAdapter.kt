@@ -41,7 +41,7 @@ class DailyRecyclerAdapter(var data: List<DailyWeatherResponse.DailyData>)
         val day = data[position].dt_txt.substring(8..9)
 
         holder.temp_TextView.text = String.format("%.0f℃",temp)
-        holder.day_TextView.text = day
+        holder.day_TextView.text = day+"일"
         setAnimation(holder.weather_LottieView,weatherID)
 
     }

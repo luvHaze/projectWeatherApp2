@@ -79,15 +79,12 @@ class MainActivity : AppCompatActivity() {
         })
 
         viewmodel.dailyWeatherData.observe(this, Observer {
-            var lm = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
-            var adapter = DailyRecyclerAdapter(it)
-            dailyWeather_recyclerview.layoutManager = lm
-            dailyWeather_recyclerview.adapter = adapter
+            dailyWeather_recyclerview.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
+            dailyWeather_recyclerview.adapter = DailyRecyclerAdapter(it)
         })
 
 
     }
-
 
     fun settingsLocationUI(data: Address){
         adminArea_Textview.text = data.adminArea
@@ -161,39 +158,19 @@ class MainActivity : AppCompatActivity() {
         weatherStatus_Textview.text = weatherStatus
     }
 
-    private fun settingsDailyWeatherUI(data: DailyWeatherResponse?) {
-        TODO("Not yet implemented")
-    }
 
     // 권한 체크
     private fun checkPermissions(): Boolean {
 
-        val isGranted =
-            ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) == PackageManager.PERMISSION_GRANTED &&
-                    ActivityCompat.checkSelfPermission(
-                        this,
-                        Manifest.permission.ACCESS_FINE_LOCATION
-                    ) == PackageManager.PERMISSION_GRANTED
-
+        val isGranted = ActivityCompat.
+        checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
+                    ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
         if (!isGranted) {
             ActivityCompat.requestPermissions(
-                this, arrayOf(
-                    Manifest.permission.ACCESS_COARSE_LOCATION,
-                    Manifest.permission.ACCESS_FINE_LOCATION
-                ), LOCATION_REQUEST
-            )
+                this, arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION), LOCATION_REQUEST)
 
-            return ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) == PackageManager.PERMISSION_GRANTED &&
-                    ActivityCompat.checkSelfPermission(
-                        this,
-                        Manifest.permission.ACCESS_FINE_LOCATION
-                    ) == PackageManager.PERMISSION_GRANTED
+            return ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
+                    ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
         } else {
             return true
         }

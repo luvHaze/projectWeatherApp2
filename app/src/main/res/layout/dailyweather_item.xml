@@ -29,7 +29,7 @@
         android:id="@+id/item_temp_Textview"
         android:layout_width="match_parent"
         android:layout_height="20dp"
-        android:fontFamily="@font/scoredream_thick"
+        android:fontFamily="@font/scoredream_light"
         android:gravity="center"
         android:text="temp"
         android:textAlignment="center"
