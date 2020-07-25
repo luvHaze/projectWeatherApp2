@@ -11,6 +11,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -33,51 +34,54 @@ class MainActivity : AppCompatActivity() {
     val LOCATION_REQUEST = 1000
     val viewmodel = ViewModelProvider.AndroidViewModelFactory(application)
         .create(MainViewModel::class.java)
+    var isGranted = false
+    val PERMISSION_LIST = arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
 
-        if (checkPermissions()) {
-
+        // 위치 권한이 이미 주어진 경우 ListActivity로 바로 이동함
+        if(checkLocationPermission()){
             getInfomation()
+        }
+        else
+        {   //사용자가 권한을 거절했던 적이 있는지 확인하고 안내 메시지 출력
+            if(ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.ACCESS_FINE_LOCATION))
+            {
+                Toast.makeText(this,"이 앱을 실행하려면 위치 권한이 필요합니다.",Toast.LENGTH_LONG).show()
+            }
 
-        } else {
-
-            Toast.makeText(this, "권한 요청 필요", Toast.LENGTH_LONG).show()
-            requestPermissions(
-                arrayOf(
-                    Manifest.permission.ACCESS_COARSE_LOCATION,
-                    Manifest.permission.ACCESS_FINE_LOCATION
-                ), LOCATION_REQUEST
-            )
+            //앱에 필요한 권한을 사용자에게 요청하는 시스템 Activity를 띄움
+            ActivityCompat.requestPermissions(this, PERMISSION_LIST, LOCATION_REQUEST)
 
         }
-
 
         settings_button.setOnClickListener {
             Timber.d("${viewmodel.dailyWeatherData.value}")
         }
-
-
 
     }
 
     // 위치랑 날씨정보 획득
     private fun getInfomation() {
 
-        //위치정보
+        // 위치정보
         viewmodel.getLocation(applicationContext)
         Timber.d("[LocaitinViewmodel data] : ${viewmodel.locationData.value}")
+        // [위치정보] 옵저버
         viewmodel.locationData.observe(this, Observer {
             settingsLocationUI(it)
         })
 
+        // [날씨정보] 옵저버
         viewmodel.weatherData.observe(this, Observer {
             settingsWeatherUI(it)
         })
 
+        // [5일 날씨정보] 옵저버
         viewmodel.dailyWeatherData.observe(this, Observer {
             dailyWeather_recyclerview.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
             dailyWeather_recyclerview.adapter = DailyRecyclerAdapter(it)
@@ -160,20 +164,32 @@ class MainActivity : AppCompatActivity() {
 
 
     // 권한 체크
-    private fun checkPermissions(): Boolean {
+    fun checkLocationPermission(): Boolean {
 
-        val isGranted = ActivityCompat.
-        checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
-                    ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
-        if (!isGranted) {
-            ActivityCompat.requestPermissions(
-                this, arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION), LOCATION_REQUEST)
+        val fineLocationPermission = ContextCompat.checkSelfPermission(
+            this,
+            Manifest.permission.ACCESS_FINE_LOCATION
+        ) == PackageManager.PERMISSION_GRANTED
+        val coarseLocationPermission = ContextCompat.checkSelfPermission(
+            this,
+            Manifest.permission.ACCESS_COARSE_LOCATION
+        ) == PackageManager.PERMISSION_GRANTED
 
-            return ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
-                    ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
-        } else {
-            return true
-        }
+        return fineLocationPermission && coarseLocationPermission
     }
 
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        var checkGrant = true
+        grantResults.forEach {
+            if(it == PackageManager.PERMISSION_DENIED) checkGrant = false
+        }
+
+        if(checkGrant) getInfomation()
+        else requestPermissions(PERMISSION_LIST, LOCATION_REQUEST)
+
+    }
 }
