@@ -33,7 +33,7 @@ class MainViewModel : ViewModel() {
         geocoder = Geocoder(context, Locale.KOREAN)
 
         val coord = locationManager!!.getLastKnownLocation(LocationManager.GPS_PROVIDER)
-        locationData.value = geocoder!!.getFromLocation(coord!!.latitude, coord!!.longitude, 1)[0]
+        locationData.value = geocoder!!.getFromLocation(coord!!.latitude, coord.longitude, 1)[0]
 
         Timber.d("LIVE DATA : ${locationData.value}")
     }
@@ -45,7 +45,7 @@ class MainViewModel : ViewModel() {
     }
 
     @SuppressLint("MissingPermission")
-    public fun createListener() {
+    private fun createListener() {
         locationManager!!.requestLocationUpdates(
             LocationManager.GPS_PROVIDER,
             1000L,
@@ -81,7 +81,6 @@ class MainViewModel : ViewModel() {
         )
     }
 
-
     // [Weather Part]
     suspend private fun requestWeather(lat: Double, lon: Double) {
 
@@ -90,9 +89,12 @@ class MainViewModel : ViewModel() {
 
         if (response.isSuccessful) {
             weatherData.postValue(Gson().fromJson(response.body(), WeatherResponse::class.java))
+        } else {
+            Timber.d("데일리 데이터 불러오기 실패 : ${response.code()}")
         }
     }
 
+    // [Daily Weather Part]
     suspend private fun requestDailyWeather(lat: Double, lon: Double) {
 
         val call2 = RetrofitInstance.api.getDailyWeatherbyCoord(lat, lon, APP_ID)
@@ -106,8 +108,6 @@ class MainViewModel : ViewModel() {
         }
 
     }
-
-
 
 
 }

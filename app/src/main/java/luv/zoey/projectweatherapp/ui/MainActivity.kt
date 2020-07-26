@@ -32,15 +32,14 @@ import java.text.SimpleDateFormat
 class MainActivity : AppCompatActivity() {
 
     val LOCATION_REQUEST = 1000
+    val PERMISSION_LIST = arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION)
+
     val viewmodel = ViewModelProvider.AndroidViewModelFactory(application)
         .create(MainViewModel::class.java)
-    var isGranted = false
-    val PERMISSION_LIST = arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
 
         // 위치 권한이 이미 주어진 경우 ListActivity로 바로 이동함
         if(checkLocationPermission()){
@@ -86,7 +85,6 @@ class MainActivity : AppCompatActivity() {
             dailyWeather_recyclerview.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
             dailyWeather_recyclerview.adapter = DailyRecyclerAdapter(it)
         })
-
 
     }
 
