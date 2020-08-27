@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -32,25 +33,34 @@ import java.text.SimpleDateFormat
 class MainActivity : AppCompatActivity() {
 
     val LOCATION_REQUEST = 1000
-    val PERMISSION_LIST = arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION)
+    val PERMISSION_LIST = arrayOf(
+        Manifest.permission.ACCESS_COARSE_LOCATION,
+        Manifest.permission.ACCESS_FINE_LOCATION
+    )
 
-    val viewmodel = ViewModelProvider.AndroidViewModelFactory(application)
-        .create(MainViewModel::class.java)
+    private lateinit var viewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
+
         // 위치 권한이 이미 주어진 경우 ListActivity로 바로 이동함
-        if(checkLocationPermission()){
-            getInfomation()
-        }
-        else
-        {   //사용자가 권한을 거절했던 적이 있는지 확인하고 안내 메시지 출력
-            if(ActivityCompat.shouldShowRequestPermissionRationale(this,
-                    Manifest.permission.ACCESS_FINE_LOCATION))
-            {
-                Toast.makeText(this,"이 앱을 실행하려면 위치 권한이 필요합니다.",Toast.LENGTH_LONG).show()
+        var request = checkLocationPermission()
+
+        if (request) {
+            Toast.makeText(this,"권한있음",Toast.LENGTH_LONG).show()
+            viewModel =
+                ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(application))
+                    .get(MainViewModel::class.java)
+        } else {   //사용자가 권한을 거절했던 적이 있는지 확인하고 안내 메시지 출력
+            if (ActivityCompat.shouldShowRequestPermissionRationale(
+                    this,
+                    Manifest.permission.ACCESS_FINE_LOCATION
+                )
+            ) {
+                Toast.makeText(this, "이 앱을 실행하려면 위치 권한이 필요합니다.", Toast.LENGTH_LONG).show()
             }
 
             //앱에 필요한 권한을 사용자에게 요청하는 시스템 Activity를 띄움
@@ -58,39 +68,12 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        settings_button.setOnClickListener {
-            Timber.d("${viewmodel.dailyWeatherData.value}")
-        }
 
     }
 
-    // 위치랑 날씨정보 획득
-    private fun getInfomation() {
-
-        // 위치정보
-        viewmodel.getLocation(applicationContext)
-        Timber.d("[LocaitinViewmodel data] : ${viewmodel.locationData.value}")
-        // [위치정보] 옵저버
-        viewmodel.locationData.observe(this, Observer {
-            settingsLocationUI(it)
-        })
-
-        // [날씨정보] 옵저버
-        viewmodel.weatherData.observe(this, Observer {
-            settingsWeatherUI(it)
-        })
-
-        // [5일 날씨정보] 옵저버
-        viewmodel.dailyWeatherData.observe(this, Observer {
-            dailyWeather_recyclerview.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
-            dailyWeather_recyclerview.adapter = DailyRecyclerAdapter(it)
-        })
-
-    }
-
-    fun settingsLocationUI(data: Address){
+    fun settingsLocationUI(data: Address) {
         adminArea_Textview.text = data.adminArea
-        if(data.locality.isNullOrEmpty()){
+        if (data.locality.isNullOrEmpty()) {
             subAdminArea_Textview.text = data.thoroughfare
         } else {
             subAdminArea_Textview.text = "${data.locality} ${data.thoroughfare}"
@@ -183,11 +166,10 @@ class MainActivity : AppCompatActivity() {
     ) {
         var checkGrant = true
         grantResults.forEach {
-            if(it == PackageManager.PERMISSION_DENIED) checkGrant = false
+            if (it == PackageManager.PERMISSION_DENIED) checkGrant = false
         }
 
-        if(checkGrant) getInfomation()
-        else requestPermissions(PERMISSION_LIST, LOCATION_REQUEST)
+        if (!checkGrant) requestPermissions(PERMISSION_LIST, LOCATION_REQUEST)
 
     }
 }
