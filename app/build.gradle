@@ -24,9 +24,15 @@ android {
         }
     }
 
+
     compileOptions {
         targetCompatibility = "8"
         sourceCompatibility = "8"
+    }
+
+    // Enables data binding.
+    buildFeatures {
+        dataBinding true
     }
 
 }

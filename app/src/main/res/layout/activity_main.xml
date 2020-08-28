@@ -1,109 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.MainActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/weatherStatus_Textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/scoredream_thick"
-        android:letterSpacing="0.05"
-        android:text="날씨상태"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/temperature_TextView"
-        app:layout_constraintEnd_toEndOf="@+id/temperature_TextView"
-        app:layout_constraintStart_toStartOf="@+id/temperature_TextView" />
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/anime_view"
-        android:layout_width="220dp"
-        android:layout_height="220dp"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="55dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_speed="0.45" />
-
-    <TextView
-        android:id="@+id/adminArea_Textview"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="148dp"
-        android:fontFamily="@font/scoredream_light"
-        android:letterSpacing="0.03"
-        android:maxLines="1"
-        android:text="adminArea"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/anime_view" />
+        android:layout_height="match_parent"
+        tools:context=".ui.MainActivity">
 
-    <TextView
-        android:id="@+id/temperature_TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:fontFamily="@font/scoredream_light"
-        android:text="30"
-        android:textColor="#000000"
-        android:textSize="56dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/anime_view" />
+        <TextView
+            android:id="@+id/weatherStatus_Textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/scoredream_thick"
+            android:letterSpacing="0.05"
+            android:text="날씨상태"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/temperature_TextView"
+            app:layout_constraintEnd_toEndOf="@+id/temperature_TextView"
+            app:layout_constraintStart_toStartOf="@+id/temperature_TextView" />
 
-    <TextView
-        android:id="@+id/subAdminArea_Textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:fontFamily="@font/scoredream_light"
-        android:letterSpacing="0.04"
-        android:maxLines="1"
-        android:text="subAdminArea"
-        android:textColor="#717171"
-        android:textSize="14dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/adminArea_Textview" />
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/anime_view"
+            android:layout_width="220dp"
+            android:layout_height="220dp"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="56dp"
+            android:layout_marginEnd="55dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_speed="0.45" />
 
-    <Button
-        android:id="@+id/settings_button"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="24dp"
-        android:background="@drawable/icon_setting"
-        android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <TextView
+            android:id="@+id/adminArea_Textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="148dp"
+            android:fontFamily="@font/scoredream_light"
+            android:letterSpacing="0.03"
+            android:maxLines="1"
+            android:text="adminArea"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/anime_view" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/dailyWeather_recyclerview"
-        android:layout_width="wrap_content"
-        android:layout_height="80dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="5dp"
-        android:foregroundGravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/subAdminArea_Textview"
-        tools:itemCount="5"
-        tools:listitem="@layout/dailyweather_item" />
+        <TextView
+            android:id="@+id/temperature_TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:fontFamily="@font/scoredream_light"
+            android:text="30"
+            android:textColor="#000000"
+            android:textSize="56dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.504"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/anime_view" />
+
+        <TextView
+            android:id="@+id/subAdminArea_Textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:fontFamily="@font/scoredream_light"
+            android:letterSpacing="0.04"
+            android:maxLines="1"
+            android:text="subAdminArea"
+            android:textColor="#717171"
+            android:textSize="14dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/adminArea_Textview" />
+
+        <Button
+            android:id="@+id/settings_button"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/icon_setting"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/dailyWeather_recyclerview"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="5dp"
+            android:foregroundGravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subAdminArea_Textview"
+            tools:itemCount="5"
+            tools:listitem="@layout/dailyweather_item" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

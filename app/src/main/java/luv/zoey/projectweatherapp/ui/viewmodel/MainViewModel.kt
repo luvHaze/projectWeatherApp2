@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
 import android.location.*
+import android.os.Bundle
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -20,7 +21,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     private var locationManager: LocationManager? = null
     private var geocoder: Geocoder? = null
-    private var context: Context? = null
     private var location: Location? = null
 
     // [지역 정보]
@@ -29,12 +29,12 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         get() = _locationData
 
     // [날씨 정보]
-    var _weatherData = MutableLiveData<WeatherResponse>()
+    private var _weatherData = MutableLiveData<WeatherResponse>()
     val weatherData: LiveData<WeatherResponse>
         get() = _weatherData
 
     // [일주일 날씨 정보]
-    var _dailyWeatherData = MutableLiveData<List<DailyWeatherResponse.DailyData>>()
+    private var _dailyWeatherData = MutableLiveData<List<DailyWeatherResponse.DailyData>>()
     val dailyWeatherResponse : LiveData<List<DailyWeatherResponse.DailyData>>
         get() = _dailyWeatherData
 
@@ -43,20 +43,24 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     var uiScope = CoroutineScope(Dispatchers.Main + job)
 
     init {
+        getLocation(application)
+        getWeather()
+    }
+
+    // 위치정보 가져오기
+    private fun getLocation(application: Application) {
         locationManager = application.getSystemService(Context.LOCATION_SERVICE) as LocationManager
         geocoder = Geocoder(application, Locale.KOREAN)
-
         @SuppressLint("MissingPermission")
         location = locationManager?.getLastKnownLocation(LocationManager.GPS_PROVIDER)
         _locationData.value =
             geocoder!!.getFromLocation(location!!.latitude, location!!.longitude, 1)[0]
-        Timber.d("[Location Data]] : ${_locationData.value}")
 
-        getWeather()
+        Timber.d("[Location Data]] : ${_locationData.value}")
     }
 
+
     // 날씨 가져오기
-    @SuppressLint("MissingPermission")
     private fun getWeather() {
         uiScope.launch {
             _weatherData.value = withContext(Dispatchers.IO) {
@@ -67,15 +71,57 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                     APP_ID
                 ).execute().body()
 
-                Gson().fromJson(response, WeatherResponse::class.java)
+                val value = Gson().fromJson(response, WeatherResponse::class.java)
+
+                value
             }
 
         }
     }
 
+    // 5일 날씨 가져오기
+    private fun getDailyWeather() {
+        uiScope.launch {
+            _dailyWeatherData.value = withContext(Dispatchers.IO) {
+
+                val response = RetrofitInstance.api.getDailyWeatherbyCoord(
+                    location!!.latitude,
+                    location!!.longitude,
+                    APP_ID
+                ).execute().body()
+
+                val value = Gson().fromJson(response, DailyWeatherResponse::class.java)
+
+                value.list
+            }
+
+        }
+    }
+
+
+
     override fun onCleared() {
         super.onCleared()
         job.cancel()
+    }
+
+    object locationListener: LocationListener{
+        override fun onLocationChanged(location: Location?) {
+            Timber.i("fdfd")
+        }
+
+        override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
+            TODO("Not yet implemented")
+        }
+
+        override fun onProviderEnabled(provider: String?) {
+            TODO("Not yet implemented")
+        }
+
+        override fun onProviderDisabled(provider: String?) {
+            TODO("Not yet implemented")
+        }
+
     }
 
 

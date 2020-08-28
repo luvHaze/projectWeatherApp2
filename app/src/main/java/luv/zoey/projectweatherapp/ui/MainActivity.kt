@@ -19,6 +19,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import luv.zoey.projectweatherapp.R
 import luv.zoey.projectweatherapp.data.WeatherResponse
 import luv.zoey.projectweatherapp.ui.viewmodel.MainViewModel
+import timber.log.Timber
 
 
 class MainActivity : AppCompatActivity() {
@@ -61,7 +62,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         settings_button.setOnClickListener {
-            Log.d("Weahter","${viewModel._weatherData.value}")
+            Timber.i(viewModel.weatherData.value.toString())
         }
 
     }
