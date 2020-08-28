@@ -10,7 +10,7 @@ import retrofit2.http.Query
 interface WeatherAPI {
 
     @GET("weather?")
-    fun getWeatherbyCoord(
+     fun getWeatherbyCoord(
         @Query("lat") lat: Double,
         @Query("lon") lon: Double,
         @Query("appid") appid: String,
@@ -18,7 +18,7 @@ interface WeatherAPI {
     ) : Call<JsonObject>
 
     @GET("forecast?")
-    fun getDailyWeatherbyCoord(
+     fun getDailyWeatherbyCoord(
         @Query("lat") lat: Double,
         @Query("lon") lon: Double,
         @Query("appid") appid: String// 7일치 데이터 가져오고자 함

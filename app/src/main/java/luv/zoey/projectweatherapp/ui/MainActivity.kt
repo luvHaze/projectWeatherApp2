@@ -3,31 +3,22 @@ package luv.zoey.projectweatherapp.ui
 import android.Manifest
 import android.content.pm.PackageManager
 import android.graphics.Color
-import android.graphics.ColorFilter
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
 import android.location.Address
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.airbnb.lottie.LottieProperty
 import com.airbnb.lottie.model.KeyPath
-import com.airbnb.lottie.value.LottieFrameInfo
-import com.airbnb.lottie.value.SimpleLottieValueCallback
 import kotlinx.android.synthetic.main.activity_main.*
 import luv.zoey.projectweatherapp.R
-import luv.zoey.projectweatherapp.data.DailyWeatherResponse
 import luv.zoey.projectweatherapp.data.WeatherResponse
-import luv.zoey.projectweatherapp.ui.adapter.DailyRecyclerAdapter
 import luv.zoey.projectweatherapp.ui.viewmodel.MainViewModel
-import timber.log.Timber
-import java.text.SimpleDateFormat
 
 
 class MainActivity : AppCompatActivity() {
@@ -54,6 +45,7 @@ class MainActivity : AppCompatActivity() {
             viewModel =
                 ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(application))
                     .get(MainViewModel::class.java)
+
         } else {   //사용자가 권한을 거절했던 적이 있는지 확인하고 안내 메시지 출력
             if (ActivityCompat.shouldShowRequestPermissionRationale(
                     this,
@@ -68,6 +60,9 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+        settings_button.setOnClickListener {
+            Log.d("Weahter","${viewModel._weatherData.value}")
+        }
 
     }
 

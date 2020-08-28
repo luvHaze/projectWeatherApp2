@@ -4,11 +4,9 @@ import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
 import android.location.*
-import android.os.Bundle
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.google.gson.Gson
 import kotlinx.coroutines.*
 import luv.zoey.projectweatherapp.api.RetrofitInstance
@@ -23,39 +21,61 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private var locationManager: LocationManager? = null
     private var geocoder: Geocoder? = null
     private var context: Context? = null
+    private var location: Location? = null
 
-    var location: Location? = null
-    var locationData = MutableLiveData<Address>()
-    var weatherData = MutableLiveData<WeatherResponse>()
-    var dailyWeatherData = MutableLiveData<List<DailyWeatherResponse.DailyData>>()
+    // [지역 정보]
+    private var _locationData = MutableLiveData<Address>()
+    val locationData: LiveData<Address>
+        get() = _locationData
 
+    // [날씨 정보]
+    var _weatherData = MutableLiveData<WeatherResponse>()
+    val weatherData: LiveData<WeatherResponse>
+        get() = _weatherData
+
+    // [일주일 날씨 정보]
+    var _dailyWeatherData = MutableLiveData<List<DailyWeatherResponse.DailyData>>()
+    val dailyWeatherResponse : LiveData<List<DailyWeatherResponse.DailyData>>
+        get() = _dailyWeatherData
+
+    // 코루틴을 위한 Job, CoroutinesScope
     var job = Job()
     var uiScope = CoroutineScope(Dispatchers.Main + job)
 
-
     init {
         locationManager = application.getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        location = getLocation1()
-//        uiScope.launch {
-//            location = withContext(Dispatchers.IO) {
-//                getLocation()
-//            }
-//        }
-        Timber.i("location : $location")
+        geocoder = Geocoder(application, Locale.KOREAN)
+
+        @SuppressLint("MissingPermission")
+        location = locationManager?.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+        _locationData.value =
+            geocoder!!.getFromLocation(location!!.latitude, location!!.longitude, 1)[0]
+        Timber.d("[Location Data]] : ${_locationData.value}")
+
+        getWeather()
     }
 
+    // 날씨 가져오기
     @SuppressLint("MissingPermission")
-    private fun requestLocation() {
+    private fun getWeather() {
+        uiScope.launch {
+            _weatherData.value = withContext(Dispatchers.IO) {
 
-        geocoder = Geocoder(context, Locale.KOREAN)
-        val coord = locationManager!!.getLastKnownLocation(LocationManager.GPS_PROVIDER)
-        locationData.value = geocoder!!.getFromLocation(coord!!.latitude, coord.longitude, 1)[0]
-        Timber.d("LIVE DATA : ${locationData.value}")
+                val response = RetrofitInstance.api.getWeatherbyCoord(
+                    location!!.latitude,
+                    location!!.longitude,
+                    APP_ID
+                ).execute().body()
+
+                Gson().fromJson(response, WeatherResponse::class.java)
+            }
+
+        }
     }
 
-    @SuppressLint("MissingPermission")
-    fun getLocation1(): Location? {
-        return locationManager?.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+    override fun onCleared() {
+        super.onCleared()
+        job.cancel()
     }
 
 
