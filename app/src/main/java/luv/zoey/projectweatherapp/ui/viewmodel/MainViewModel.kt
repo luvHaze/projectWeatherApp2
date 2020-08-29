@@ -15,6 +15,7 @@ import luv.zoey.projectweatherapp.data.DailyWeatherResponse
 import luv.zoey.projectweatherapp.data.WeatherResponse
 import luv.zoey.projectweatherapp.others.Constants.APP_ID
 import timber.log.Timber
+import java.io.IOException
 import java.util.*
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
@@ -53,12 +54,23 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         geocoder = Geocoder(application, Locale.KOREAN)
         @SuppressLint("MissingPermission")
         location = locationManager?.getLastKnownLocation(LocationManager.GPS_PROVIDER)
-        _locationData.value =
-            geocoder!!.getFromLocation(location!!.latitude, location!!.longitude, 1)[0]
-
+        try {
+            //geocoderLocation()
+            _locationData.value = geocoder!!.getFromLocation(location!!.latitude, location!!.longitude, 1).first()
+        } catch (e: IOException){
+            e.printStackTrace()
+        }
         Timber.d("[Location Data]] : ${_locationData.value}")
     }
 
+    private fun geocoderLocation() {
+        uiScope.launch {
+            _locationData.value = withContext(Dispatchers.IO) {
+                geocoder!!.getFromLocation(location!!.latitude, location!!.longitude, 1).first()
+
+            }
+        }
+    }
 
     // 날씨 가져오기
     private fun getWeather() {

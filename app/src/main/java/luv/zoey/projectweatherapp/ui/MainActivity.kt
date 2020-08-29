@@ -12,13 +12,16 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.airbnb.lottie.LottieProperty
 import com.airbnb.lottie.model.KeyPath
 import kotlinx.android.synthetic.main.activity_main.*
 import luv.zoey.projectweatherapp.R
 import luv.zoey.projectweatherapp.data.WeatherResponse
+import luv.zoey.projectweatherapp.databinding.ActivityMainBinding
 import luv.zoey.projectweatherapp.ui.viewmodel.MainViewModel
+import luv.zoey.projectweatherapp.ui.viewmodel.MainViewModelFactory
 import timber.log.Timber
 
 
@@ -31,11 +34,11 @@ class MainActivity : AppCompatActivity() {
     )
 
     private lateinit var viewModel: MainViewModel
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
 
 
         // 위치 권한이 이미 주어진 경우 ListActivity로 바로 이동함
@@ -44,8 +47,10 @@ class MainActivity : AppCompatActivity() {
         if (request) {
             Toast.makeText(this,"권한있음",Toast.LENGTH_LONG).show()
             viewModel =
-                ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(application))
+                ViewModelProvider(this, MainViewModelFactory(application))
                     .get(MainViewModel::class.java)
+
+
 
         } else {   //사용자가 권한을 거절했던 적이 있는지 확인하고 안내 메시지 출력
             if (ActivityCompat.shouldShowRequestPermissionRationale(
@@ -58,7 +63,6 @@ class MainActivity : AppCompatActivity() {
 
             //앱에 필요한 권한을 사용자에게 요청하는 시스템 Activity를 띄움
             ActivityCompat.requestPermissions(this, PERMISSION_LIST, LOCATION_REQUEST)
-
         }
 
         settings_button.setOnClickListener {
