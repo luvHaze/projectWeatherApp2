@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.airbnb.lottie.LottieProperty
 import com.airbnb.lottie.model.KeyPath
@@ -39,24 +40,22 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
-
+        binding.lifecycleOwner = this
 
         // 위치 권한이 이미 주어진 경우 ListActivity로 바로 이동함
         var request = checkLocationPermission()
 
         if (request) {
-            Toast.makeText(this,"권한있음",Toast.LENGTH_LONG).show()
             viewModel =
                 ViewModelProvider(this, MainViewModelFactory(application))
                     .get(MainViewModel::class.java)
+            binding.mainViewModel = viewModel
 
-
-
+            viewModel.weatherData.observe(this, Observer {
+                binding.temperatureTextView.text = String.format("%.1f", it.main?.temp?.toDouble()?.minus(273.15))
+            })
         } else {   //사용자가 권한을 거절했던 적이 있는지 확인하고 안내 메시지 출력
-            if (ActivityCompat.shouldShowRequestPermissionRationale(
-                    this,
-                    Manifest.permission.ACCESS_FINE_LOCATION
-                )
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)
             ) {
                 Toast.makeText(this, "이 앱을 실행하려면 위치 권한이 필요합니다.", Toast.LENGTH_LONG).show()
             }
@@ -65,19 +64,12 @@ class MainActivity : AppCompatActivity() {
             ActivityCompat.requestPermissions(this, PERMISSION_LIST, LOCATION_REQUEST)
         }
 
+
         settings_button.setOnClickListener {
+            Timber.i(viewModel.locationData.value.toString())
             Timber.i(viewModel.weatherData.value.toString())
         }
 
-    }
-
-    fun settingsLocationUI(data: Address) {
-        adminArea_Textview.text = data.adminArea
-        if (data.locality.isNullOrEmpty()) {
-            subAdminArea_Textview.text = data.thoroughfare
-        } else {
-            subAdminArea_Textview.text = "${data.locality} ${data.thoroughfare}"
-        }
     }
 
     fun settingsWeatherUI(data: WeatherResponse) {

@@ -44,16 +44,22 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     var uiScope = CoroutineScope(Dispatchers.Main + job)
 
     init {
-        getLocation(application)
+        locationManager = application.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        geocoder = Geocoder(application, Locale.KOREAN)
+
+        getLocation()
         getWeather()
     }
 
     // 위치정보 가져오기
-    private fun getLocation(application: Application) {
-        locationManager = application.getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        geocoder = Geocoder(application, Locale.KOREAN)
+    private fun getLocation() {
+
         @SuppressLint("MissingPermission")
-        location = locationManager?.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+        location = if(locationManager?.getLastKnownLocation(LocationManager.GPS_PROVIDER) != null)
+            locationManager?.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+        else
+            locationManager?.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
+
         try {
             //geocoderLocation()
             _locationData.value = geocoder!!.getFromLocation(location!!.latitude, location!!.longitude, 1).first()
@@ -61,15 +67,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             e.printStackTrace()
         }
         Timber.d("[Location Data]] : ${_locationData.value}")
-    }
-
-    private fun geocoderLocation() {
-        uiScope.launch {
-            _locationData.value = withContext(Dispatchers.IO) {
-                geocoder!!.getFromLocation(location!!.latitude, location!!.longitude, 1).first()
-
-            }
-        }
     }
 
     // 날씨 가져오기
@@ -109,7 +106,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
         }
     }
-
 
 
     override fun onCleared() {
