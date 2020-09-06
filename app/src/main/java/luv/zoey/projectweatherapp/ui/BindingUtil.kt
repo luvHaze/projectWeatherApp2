@@ -4,7 +4,6 @@ import android.location.Address
 import android.view.View
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import androidx.lifecycle.LiveData
 import com.airbnb.lottie.LottieAnimationView
 import kotlinx.android.synthetic.main.activity_main.*
 import luv.zoey.projectweatherapp.R
@@ -13,16 +12,21 @@ import luv.zoey.projectweatherapp.data.WeatherResponse
 
 // [Location Settings]
 @BindingAdapter("setAdminArea")
-fun TextView.setAdminArea(data: Address) {
-    this.text = data.adminArea
+fun TextView.setAdminArea(data: Address?) {
+    if(data != null) {
+        this.text = data.adminArea.toString()
+    } else {
+        this.text = ""
+    }
+
 }
 
 @BindingAdapter("setSubAdminArea")
-fun TextView.setSubAdminArea(data: Address) {
-    if (data.locality.isNullOrEmpty()) {
-        this.text = data.thoroughfare
+fun TextView.setSubAdminArea(data: Address?) {
+    if (data?.locality.isNullOrEmpty()) {
+        this.text = data?.thoroughfare
     } else {
-        this.text = "${data.locality} ${data.subAdminArea}"
+        this.text = "${data?.locality} ${data?.subAdminArea}"
     }
 }
 
@@ -69,7 +73,7 @@ fun TextView.setWeatherStatus(data: WeatherResponse?) {
 }
 
 @BindingAdapter("setTemperature")
-fun TextView.setTemperature(data: WeatherResponse) {
+fun TextView.setTemperature(data: WeatherResponse?) {
     if(data != null){
 
     } else {

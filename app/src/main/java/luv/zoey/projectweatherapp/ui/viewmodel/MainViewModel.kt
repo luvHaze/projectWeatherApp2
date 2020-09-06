@@ -61,7 +61,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             locationManager?.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
 
         try {
-            //geocoderLocation()
             _locationData.value = geocoder!!.getFromLocation(location!!.latitude, location!!.longitude, 1).first()
         } catch (e: IOException){
             e.printStackTrace()
