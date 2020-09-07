@@ -1,4 +1,4 @@
-package luv.zoey.projectweatherapp.data
+package luv.zoey.projectweatherapp.model
 
 import com.google.gson.annotations.SerializedName
 

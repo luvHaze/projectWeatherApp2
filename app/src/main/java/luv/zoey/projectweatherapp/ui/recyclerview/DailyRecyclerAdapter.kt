@@ -1,4 +1,4 @@
-package luv.zoey.projectweatherapp.ui.adapter
+package luv.zoey.projectweatherapp.ui.recyclerview
 
 import android.graphics.Color
 import android.graphics.PorterDuff
@@ -7,13 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.lottie.LottieAnimationView
 import com.airbnb.lottie.LottieProperty
 import com.airbnb.lottie.model.KeyPath
 import luv.zoey.projectweatherapp.R
-import luv.zoey.projectweatherapp.data.DailyWeatherResponse
+import luv.zoey.projectweatherapp.model.DailyWeatherResponse
 
 class DailyRecyclerAdapter(var data: List<DailyWeatherResponse.DailyData>)
     : RecyclerView.Adapter<DailyRecyclerAdapter.DailyRecyclerViewHolder>() {

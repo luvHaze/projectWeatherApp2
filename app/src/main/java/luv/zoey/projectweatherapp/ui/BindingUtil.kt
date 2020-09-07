@@ -1,13 +1,9 @@
 package luv.zoey.projectweatherapp.ui
 
 import android.location.Address
-import android.view.View
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import com.airbnb.lottie.LottieAnimationView
-import kotlinx.android.synthetic.main.activity_main.*
-import luv.zoey.projectweatherapp.R
-import luv.zoey.projectweatherapp.data.WeatherResponse
+import luv.zoey.projectweatherapp.model.WeatherResponse
 
 
 // [Location Settings]

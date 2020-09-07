@@ -11,11 +11,10 @@ import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
 import kotlinx.coroutines.*
 import luv.zoey.projectweatherapp.api.RetrofitInstance
-import luv.zoey.projectweatherapp.data.DailyWeatherResponse
-import luv.zoey.projectweatherapp.data.WeatherResponse
+import luv.zoey.projectweatherapp.model.DailyWeatherResponse
+import luv.zoey.projectweatherapp.model.WeatherResponse
 import luv.zoey.projectweatherapp.others.Constants.APP_ID
 import timber.log.Timber
-import java.io.IOException
 import java.util.*
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
@@ -36,7 +35,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     // [일주일 날씨 정보]
     private var _dailyWeatherData = MutableLiveData<List<DailyWeatherResponse.DailyData>>()
-    val dailyWeatherResponse : LiveData<List<DailyWeatherResponse.DailyData>>
+    val dailyWeatherData: LiveData<List<DailyWeatherResponse.DailyData>>
         get() = _dailyWeatherData
 
     // 코루틴을 위한 Job, CoroutinesScope
@@ -49,22 +48,21 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
         getLocation()
         getWeather()
+        getDailyWeather()
     }
 
     // 위치정보 가져오기
     private fun getLocation() {
 
         @SuppressLint("MissingPermission")
-        location = if(locationManager?.getLastKnownLocation(LocationManager.GPS_PROVIDER) != null)
+        location = if (locationManager?.getLastKnownLocation(LocationManager.GPS_PROVIDER) != null)
             locationManager?.getLastKnownLocation(LocationManager.GPS_PROVIDER)
         else
             locationManager?.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
 
-        try {
-            _locationData.value = geocoder!!.getFromLocation(location!!.latitude, location!!.longitude, 1).first()
-        } catch (e: IOException){
-            e.printStackTrace()
-        }
+        _locationData.value =
+            geocoder!!.getFromLocation(location!!.latitude, location!!.longitude, 1).first()
+
         Timber.d("[Location Data]] : ${_locationData.value}")
     }
 
@@ -106,13 +104,12 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-
     override fun onCleared() {
         super.onCleared()
         job.cancel()
     }
 
-    object locationListener: LocationListener{
+    object locationListener : LocationListener {
         override fun onLocationChanged(location: Location?) {
             Timber.i("fdfd")
         }
