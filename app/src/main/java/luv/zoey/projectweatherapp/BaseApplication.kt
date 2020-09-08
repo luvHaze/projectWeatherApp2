@@ -11,13 +11,10 @@ class BaseApplication : Application() {
 
     val TAG = "BASE_APPLICATION"
 
-
     override fun onCreate() {
         super.onCreate()
 
         Timber.plant(Timber.DebugTree())
-
     }
-
 
 }

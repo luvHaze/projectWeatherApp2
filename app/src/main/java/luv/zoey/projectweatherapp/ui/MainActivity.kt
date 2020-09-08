@@ -38,8 +38,6 @@ class MainActivity : AppCompatActivity() {
 
         checkLocationPermission()
 
-
-
         settings_button.setOnClickListener {
             Timber.i(viewModel.locationData.value.toString())
             Timber.i(viewModel.weatherData.value.toString())

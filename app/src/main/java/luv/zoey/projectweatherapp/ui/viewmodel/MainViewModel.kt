@@ -19,6 +19,10 @@ import java.util.*
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
 
+    // Const
+    private val STANDARD_DAILY_WEATHER_TIME = "12:00:00"
+
+    // 필요한 객체들
     private var locationManager: LocationManager? = null
     private var geocoder: Geocoder? = null
     private var location: Location? = null
@@ -46,10 +50,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         locationManager = application.getSystemService(Context.LOCATION_SERVICE) as LocationManager
         geocoder = Geocoder(application, Locale.KOREAN)
 
-        getLocation()
-        registerLocationListener()
-        getWeather()
-        getDailyWeather()
+        getLocation() // 초기 위치 가져오기
+        registerLocationListener() // 로케이션 리스너등록 (위치 변경이 있으면 위치정보랑 날씨 갱신)
+        getWeather()    // 현재 날씨 가져오기
+        getDailyWeather() // 5일 날씨 가져오기 (12:00 기준)
     }
 
 
@@ -151,7 +155,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
                 val value = Gson().fromJson(response, DailyWeatherResponse::class.java)
                 val filteredValue = value.list.filter {
-                    it.dt_txt.endsWith("12:00:00")
+                    it.dt_txt.endsWith(STANDARD_DAILY_WEATHER_TIME)
                 }
 
                 filteredValue
