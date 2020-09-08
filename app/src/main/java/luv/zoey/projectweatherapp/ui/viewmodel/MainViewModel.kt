@@ -47,23 +47,76 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         geocoder = Geocoder(application, Locale.KOREAN)
 
         getLocation()
+        registerLocationListener()
         getWeather()
         getDailyWeather()
     }
 
-    // 위치정보 가져오기
-    private fun getLocation() {
 
-        @SuppressLint("MissingPermission")
-        location = if (locationManager?.getLastKnownLocation(LocationManager.GPS_PROVIDER) != null)
-            locationManager?.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+    // 위치정보 가져오기
+    @SuppressLint("MissingPermission")
+    private fun registerLocationListener() {
+        var provider = ""
+
+        if (locationManager?.getLastKnownLocation(LocationManager.GPS_PROVIDER) != null)
+            provider = LocationManager.GPS_PROVIDER
         else
-            locationManager?.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
+            provider = LocationManager.NETWORK_PROVIDER
+
+        locationManager?.requestLocationUpdates(
+            provider,
+            5000L,
+            10.0f,
+            object : LocationListener {
+                // [onLocationChanged]
+                // 위치정보를 가져올 수 있는 메소드
+                // 위치 이동이나 시간 경과로 인해 호출된다.
+                // 최신 위치는 location 파라미터가 가지고 있다.
+                override fun onLocationChanged(location: Location?) {
+                    getLocationWithGeocoder(location!!)
+                    getWeather()
+                    getDailyWeather()
+                }
+
+                // [onStatusChanged]
+                // 위치 공급자가 사용 불가능해질때 호출됨
+                // 단순히 위치정보를 구한다면 작성할 필요 없
+                override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
+                }
+
+                // [onProviderEnabled]
+                // 위치공급자가 사용 가능해질 때 호출된다.
+                override fun onProviderEnabled(provider: String?) {
+                }
+
+                // [onProviderDisabled]
+                // 위치 공급자의 상태가 바뀔 때 호출됨
+                override fun onProviderDisabled(provider: String?) {
+                }
+
+            }
+        )
+
+    }
+
+    @SuppressLint("MissingPermission")
+    private fun getLocation() {
+        if (locationManager?.getLastKnownLocation(LocationManager.GPS_PROVIDER) != null) {
+            location = locationManager?.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+        } else {
+            location = locationManager?.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
+        }
 
         _locationData.value =
             geocoder!!.getFromLocation(location!!.latitude, location!!.longitude, 1).first()
 
         Timber.d("[Location Data]] : ${_locationData.value}")
+
+    }
+
+    private fun getLocationWithGeocoder(location: Location) {
+        _locationData.value =
+            geocoder!!.getFromLocation(location!!.latitude, location!!.longitude, 1).first()
     }
 
     // 날씨 가져오기
@@ -97,8 +150,11 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                 ).execute().body()
 
                 val value = Gson().fromJson(response, DailyWeatherResponse::class.java)
+                val filteredValue = value.list.filter {
+                    it.dt_txt.endsWith("12:00:00")
+                }
 
-                value.list
+                filteredValue
             }
 
         }
@@ -107,25 +163,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     override fun onCleared() {
         super.onCleared()
         job.cancel()
-    }
-
-    object locationListener : LocationListener {
-        override fun onLocationChanged(location: Location?) {
-            Timber.i("fdfd")
-        }
-
-        override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
-            TODO("Not yet implemented")
-        }
-
-        override fun onProviderEnabled(provider: String?) {
-            TODO("Not yet implemented")
-        }
-
-        override fun onProviderDisabled(provider: String?) {
-            TODO("Not yet implemented")
-        }
-
     }
 
 

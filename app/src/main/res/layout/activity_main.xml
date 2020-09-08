@@ -34,7 +34,7 @@
             android:layout_width="220dp"
             android:layout_height="220dp"
             android:layout_marginStart="55dp"
-            android:layout_marginTop="56dp"
+            android:layout_marginTop="36dp"
             android:layout_marginEnd="55dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.493"
@@ -42,7 +42,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
-            app:lottie_speed="0.45" />
+            app:lottie_speed="0.60" />
 
         <TextView
             android:id="@+id/adminArea_Textview"
@@ -103,14 +103,14 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/dailyWeather_recyclerview"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:layout_height="80dp"
             android:layout_marginStart="5dp"
             android:layout_marginTop="28dp"
             android:layout_marginEnd="5dp"
-            android:foregroundGravity="center"
+            android:foregroundGravity="center_horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
